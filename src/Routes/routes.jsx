@@ -8,6 +8,10 @@ import PrivateRoute from "../Private/PrivateRoute";
 import Dashboard from "../Layout/Dashbord";
 import Profile from "../Components/Dashbord/Profile/Profile";
 import Forbidden from "../Pages/Error/Forbidden";
+import AddCamp from "../Components/Dashbord/Admin/AdminCompo/AddCamp";
+import AvailableCamps from "../Components/Share/AllavaialeCamp";
+import Container from "../Container/Container";
+import CampDetails from "../Components/Share/Camp_Details";
 
 
 
@@ -35,7 +39,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/camps',
-                element: <Login></Login>,
+                element: <Container><AvailableCamps></AvailableCamps></Container>,
+            },
+            {
+                path: '/camp-details/:campId',
+                element: <Container><CampDetails></CampDetails></Container>,
             },
             {
                 path: '/about',
@@ -73,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addcamp',
-        element: <p>Add camp</p>
+        element: <AddCamp></AddCamp>
       },
       {
         path: 'managecamp',

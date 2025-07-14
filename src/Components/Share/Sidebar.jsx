@@ -7,19 +7,20 @@ import { Link } from 'react-router'
 import ParticipentContainer from '../Dashbord/Participent/ParticipentContainer'
 import AdminContainer from '../Dashbord/Admin/AdminContainer'
 import MenuItem from './MenuItem'
+import useRole from '../../Hooks/useRole'
+import LoadingEle from './LoadingEle'
 
 
 
 const Sidebar = () => {
-    const role='admin'
     const [isActive, setIsActive] = useState(false)
-    // const [role, isRoleLoading] = useRole()
+    const {role, roleLoading} = useRole();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setIsActive(!isActive)
   }
-//    if (isRoleLoading) return <LoadingSpinner />
+  if (roleLoading) return <p className='font-semibold flex flex-col justify-center items-center max-h-screen'>Loading...</p> 
   return (
     <>
       {/* Small Screen Navbar */}

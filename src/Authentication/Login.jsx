@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import SocialLogin from './SocialLogin';
+import useAxios from '../Hooks/useAxios';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {loginUser}= useAuth();
+    const axiosInstance= useAxios();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -15,7 +17,7 @@ const Login = () => {
 
     const onSubmit = data => {
         loginUser(data.email, data.password)
-            .then( (result) => {
+            .then( async(result) => {
                     const user = result?.user;
 
                     const userInfo = {
@@ -23,7 +25,8 @@ const Login = () => {
                     email: user?.email,
                     image: user?.photoURL,
                     }
-                    console.log(userInfo);
+
+                    const userRes = await axiosInstance.post('/user', userInfo);
 
 
                 navigate(from);

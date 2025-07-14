@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router";
+import useAuth from "../../Hooks/useAuth";
+import LoadingEle from "./LoadingEle";
 
 
 export default function Navbar() {
+  const {user,logoutUser,loading} = useAuth()
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const toggleMobileDropdown = () => setIsMobileDropdownOpen(!isMobileDropdownOpen);
   const toggleProfileMenu = () => setIsProfileOpen(!isProfileOpen);
-  const user = {
-  name: "Shami San",
-  photo: "https://i.pravatar.cc/100"
+  const users = {
+  name: user?.displayName,
+  photo: user?.photoURL
   };
 
   const navLinkClass = ({ isActive }) =>
     isActive
       ? "text-green-600 font-semibold"
       : "hover:text-green-600 transition";
-
+  
+  if(loading){
+        <LoadingEle></LoadingEle>
+        return;
+    }
+  
   return (
     <div className="z-50 bg-black/64 shadow-md  mx-auto px-2 md:px-12 lg:px-16 xl:px-24 sticky top-0">
     <nav className=" py-5 flex items-center justify-between relative ">
@@ -72,7 +80,7 @@ export default function Navbar() {
           <div className="relative">
             <img
               onClick={toggleProfileMenu} 
-              src={user.photo}
+              src={users.photo}
               alt="profile"
               className="w-10 h-10 rounded-full object-cover cursor-pointer border-2 border-green-600"
             />
@@ -87,10 +95,10 @@ export default function Navbar() {
 
             {isProfileOpen && (
               <div className="absolute right-0 mt-5 bg-white shadow-lg rounded w-48 p-4 text-sm space-y-2 z-50">
-                <p className="font-semibold text-green-500">{user.name}</p>
+                <p className="font-semibold text-green-500">{users.name}</p>
                 <hr />
                 <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink> 
-                <button className="text-left w-full hover:text-red-500">Logout</button>
+                <button onClick={()=>logoutUser()} className="text-left w-full hover:text-red-500">Logout</button>
               </div>
             )}
           </div>

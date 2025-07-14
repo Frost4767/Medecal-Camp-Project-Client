@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
+import useAxios from '../Hooks/useAxios';
 
 const SocialLogin = () => {
     const { googleLogin } = useAuth();
+    const axiosInstance= useAxios();
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from || '/';
@@ -21,9 +23,8 @@ const SocialLogin = () => {
                     image: user?.photoURL,
                     
                 }
-                console.log(userInfo);
-                // const res = await axiosInstance.post('/users', userInfo);
-                // console.log('user update info', res.data)
+                
+                const userRes = await axiosInstance.post('/user', userInfo);
 
                 navigate(from);
             })

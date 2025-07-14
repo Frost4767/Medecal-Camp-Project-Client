@@ -6,7 +6,8 @@ import useAuth from './useAuth';
 const useRole = () => {
     const { user, loading: authLoading } = useAuth();
     const axiosSecure = useAxiosSecure();
-
+    
+    // defult hisebe 1st a user deoya hosse role a
     const { data: role = 'user', isLoading: roleLoading, refetch } = useQuery({
         queryKey: ['role', user?.email],
         enabled: !authLoading && !!user?.email,
