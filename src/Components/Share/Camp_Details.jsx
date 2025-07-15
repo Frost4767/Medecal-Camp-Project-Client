@@ -76,6 +76,7 @@ const CampDetails = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // form data with camp register in db
   const handleSubmit = (e) => {
     e.preventDefault();
     const participantData = {

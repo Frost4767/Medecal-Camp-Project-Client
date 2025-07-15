@@ -25,7 +25,7 @@ const MyCarousel = () => {
             className="object-cover w-full h-full z-0"
           />
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10"></div>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-10"></div>
           {/* Text Overlay */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 z-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Free Health Check-Up Camp</h2>
@@ -47,7 +47,7 @@ const MyCarousel = () => {
             alt="Found Item"
             className="object-cover w-full h-full z-0 "
           />
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10"></div>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-10"></div>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 z-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Women’s Wellness Camp</h2>
             <p className="text-lg md:text-xl md:max-w-2/5">Dedicated to women’s health, this camp includes gynecological consultation, breast cancer awareness, and nutritional guidance for a healthier life.</p>
@@ -68,7 +68,7 @@ const MyCarousel = () => {
             alt="Recovered"
             className="object-cover w-full h-full z-0"
           />
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10"></div>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-10"></div>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 z-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Eye & Dental Care Camp</h2>
             <p className="text-lg md:text-xl md:max-w-2/5">Specialized camp focused on eye and dental check-ups. Get free vision tests, dental scaling, and oral hygiene advice from expert professionals.</p>

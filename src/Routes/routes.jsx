@@ -12,6 +12,7 @@ import AddCamp from "../Components/Dashbord/Admin/AdminCompo/AddCamp";
 import AvailableCamps from "../Components/Share/AllavaialeCamp";
 import Container from "../Container/Container";
 import CampDetails from "../Components/Share/Camp_Details";
+import ManageCamps from "../Components/Dashbord/Admin/AdminCompo/ManageCamp";
 
 
 
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'managecamp',
-        element: <p>manageCamp</p>
+        element: <ManageCamps></ManageCamps>
       },
       {
         path: 'manageresiter',
