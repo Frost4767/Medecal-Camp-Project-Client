@@ -37,6 +37,7 @@ const ManageRegisteredCamps = () => {
       }
     }
   };
+  if(isLoading) return <p>Loading...</p>
 
   return (
     <div className="p-4 overflow-x-auto">
