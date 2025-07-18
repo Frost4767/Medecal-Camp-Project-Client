@@ -7,3 +7,13 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+.btn-blue {
+  @apply bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700;
+}
+.btn-green {
+  @apply bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700;
+}
+.btn-red {
+  @apply bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700;
+}

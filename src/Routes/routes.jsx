@@ -13,6 +13,9 @@ import AvailableCamps from "../Components/Share/AllavaialeCamp";
 import Container from "../Container/Container";
 import CampDetails from "../Components/Share/Camp_Details";
 import ManageCamps from "../Components/Dashbord/Admin/AdminCompo/ManageCamp";
+import RegisteredCamps from "../Components/Dashbord/Participent/RegisterCamp";
+import PaymentHistory from "../Components/Dashbord/Participent/PaymentHistory";
+import ManageRegisteredCamps from "../Components/Dashbord/Admin/ManageRegister";
 
 
 
@@ -74,11 +77,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'registercamp',
-        element: <p>registerCamp</p>
+        element: <RegisteredCamps></RegisteredCamps>
       },
       {
         path: 'payment',
-        element: <p>payments</p>
+        element: <PaymentHistory></PaymentHistory>
       },
       {
         path: 'addcamp',
@@ -90,7 +93,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'manageresiter',
-        element: <p>manageRegister</p>
+        element: <ManageRegisteredCamps></ManageRegisteredCamps>
       },
     ],
    },
