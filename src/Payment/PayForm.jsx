@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react';
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const ModalPayForm = ({ reg, refetch }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,6 +77,7 @@ const ModalPayForm = ({ reg, refetch }) => {
 
       if (res.data?.message === 'Payment confirmed') {
         setSuccess('✅ Payment successful!');
+        toast(`Transaction ${paymentIntent.id}`)
         setTransactionId(paymentIntent.id);
         refetch();
       } else {
@@ -90,7 +92,7 @@ const ModalPayForm = ({ reg, refetch }) => {
 
   return (
     <>
-      <button onClick={openModal} className="btn-blue">
+      <button onClick={openModal} className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-8 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">
         Pay
       </button>
 

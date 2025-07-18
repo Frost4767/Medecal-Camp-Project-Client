@@ -16,6 +16,7 @@ import ManageCamps from "../Components/Dashbord/Admin/AdminCompo/ManageCamp";
 import RegisteredCamps from "../Components/Dashbord/Participent/RegisterCamp";
 import PaymentHistory from "../Components/Dashbord/Participent/PaymentHistory";
 import ManageRegisteredCamps from "../Components/Dashbord/Admin/ManageRegister";
+import ParticipantAnalytics from "../Components/Dashbord/Participent/Analytics";
 
 
 
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'analytic',
-        element: <p>analytic</p>
+        element: <ParticipantAnalytics></ParticipantAnalytics>
       },
       {
         path: 'registercamp',

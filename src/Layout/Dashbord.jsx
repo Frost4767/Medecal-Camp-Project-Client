@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router'
 import Sidebar from '../Components/Share/Sidebar'
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -14,6 +15,7 @@ const Dashboard = () => {
           {/* Outlet for dynamic contents */}
           <Outlet />
         </div>
+        <ToastContainer />
       </div>
     </div>
   )

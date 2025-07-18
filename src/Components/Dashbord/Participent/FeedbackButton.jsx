@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const FeedbackButton = ({ reg }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const FeedbackButton = ({ reg }) => {
   return (
     <>
       {
-        feedback? '✅': <button onClick={openModal} className="btn-blue">Feedback</button>
+        feedback? <div className='flex justify-center'><AiFillCheckCircle size={24} color='green' /></div> : <button onClick={openModal} className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-full shadow-md transition-transform transform hover:scale-105">Feedback</button>
       }
 
       <Transition appear show={isOpen} as={Fragment}>
