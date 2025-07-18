@@ -23,10 +23,11 @@ import {
   FaEnvelope,
   FaExclamationTriangle
 } from 'react-icons/fa';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const CampDetails = () => {
   const { campId } = useParams();
-  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +41,17 @@ const CampDetails = () => {
   const { data: camp, isLoading, isError } = useQuery({
     queryKey: ['camp', campId],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/camp/${campId}`);
+      const res = await axiosSecure.get(`/camp/${campId}`);
       return res.data;
     }
   });
 
   const mutation = useMutation({
     mutationFn: async (data) => {
-      return await axiosInstance.post('/participants', data);
+      return await axiosSecure.post('/participants', data);
     },
     onSuccess: async () => {
-      await axiosInstance.patch(`/camp/${campId}/increment-participant`);
+      await axiosSecure.patch(`/camp/${campId}/increment-participant`);
       queryClient.invalidateQueries({ queryKey: ['camp', campId] });
       setIsOpen(false);
     }
