@@ -88,6 +88,9 @@ const ManageRegisteredCamps = () => {
           ))}
         </tbody>
       </table>
+      {participants.length === 0 && (
+          <div className="text-center py-6 text-gray-500">No participant available.</div>
+        )}
     </div>
   );
 };

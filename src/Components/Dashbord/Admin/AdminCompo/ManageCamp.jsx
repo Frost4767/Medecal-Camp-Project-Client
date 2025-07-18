@@ -108,6 +108,9 @@ const ManageCamps = () => {
             ))}
           </tbody>
         </table>
+        {camps.length === 0 && (
+          <div className="text-center py-6 text-gray-500">No camps available.</div>
+        )}
       </div>
 
       {/* Update Modal */}
