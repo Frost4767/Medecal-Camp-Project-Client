@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -11,16 +10,16 @@ import {
   FaMoneyBill,
   FaUsers
 } from 'react-icons/fa';
-
-import useAxios from '../../Hooks/useAxios';
 import { Link } from 'react-router';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+
 
 const PopularCamps = () => {
-  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { data: camps = [], isLoading } = useQuery({
     queryKey: ['popularCamps'],
     queryFn: async () => {
-      const res = await axiosInstance.get('/allcamp');
+      const res = await axiosSecure.get('/allcamp');
       return res.data;
     }
   });
@@ -38,6 +37,11 @@ const PopularCamps = () => {
       </div>
     );
 
+  
+  const topCamps = [...camps]
+    .sort((a, b) => b.participantCount - a.participantCount)
+    .slice(0, 6);
+
   return (
     <section
       ref={sectionRef}
@@ -54,7 +58,7 @@ const PopularCamps = () => {
 
         {/* Cards */}
         <div className="space-y-12">
-          {camps.map((camp, index) => {
+          {topCamps.map((camp, index) => {
             const isLeft = index % 2 === 0;
             return (
               <div
@@ -96,10 +100,14 @@ const PopularCamps = () => {
                   {/* Info */}
                   <div
                     className={`p-6 flex flex-col gap-2 ${
-                      isLeft ? 'order-2 md:order-2 text-left' : 'order-2 md:order-1 text-right'
+                      isLeft
+                        ? 'order-2 md:order-2 text-left'
+                        : 'order-2 md:order-1 text-right'
                     } flex-1`}
                   >
-                    <h3 className="text-2xl font-bold text-green-700 text-start">{camp.name}</h3>
+                    <h3 className="text-2xl font-bold text-green-700 text-start">
+                      {camp.name}
+                    </h3>
 
                     <p className="flex items-center gap-2 text-sm text-gray-700">
                       <FaMapMarkerAlt className="text-red-500" /> {camp.location}
@@ -116,7 +124,8 @@ const PopularCamps = () => {
                       {camp.fees === 0 ? 'Free' : `৳${camp.fees}`}
                     </p>
                     <p className="flex items-center gap-2 text-sm text-gray-700">
-                      <FaUsers className="text-purple-600" /> {camp.participantCount} Participants
+                      <FaUsers className="text-purple-600" />{' '}
+                      {camp.participantCount} Participants
                     </p>
 
                     <Link
@@ -130,16 +139,16 @@ const PopularCamps = () => {
               </div>
             );
           })}
-          
         </div>
       </div>
-      <div className='flex justify-center mt-24'>
+
+      <div className="flex justify-center mt-24">
         <Link
-        to='/camps'
-        className=" mt-4 text-center border-2 border-green-500  bg-white hover:text-white hover:bg-green-700 text-green-600 px-5 py-2 rounded-lg font-semibold transition sm:text-xl"
+          to="/camps"
+          className="mt-4 text-center border-2 border-green-500 bg-white hover:text-white hover:bg-green-700 text-green-600 px-5 py-2 rounded-lg font-semibold transition sm:text-xl"
         >
-        See All Camps
-      </Link>
+          See All Camps
+        </Link>
       </div>
     </section>
   );
