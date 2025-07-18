@@ -49,7 +49,7 @@ const PaymentHistory = () => {
                   <span className={`px-2 py-1 rounded text-xs font-semibold ${
                     payment.confirmed === true ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
                   }`}>
-                    {payment.confirmed && 'true'}
+                    {payment.confirmed && 'Confirmed'}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-blue-600 font-mono">{payment.paymentIntentId?.slice(0, 10)}...</td>

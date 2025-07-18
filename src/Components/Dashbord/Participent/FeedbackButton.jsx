@@ -10,7 +10,7 @@ const FeedbackButton = ({ reg }) => {
   const axiosSecure = useAxiosSecure();
 
 
-  const { data: feedback, isPending, isError,refetch } = useQuery({
+  const { data: feedback, isPending, isLoading,refetch } = useQuery({
   queryKey: ['feedback', reg._id],
   queryFn: async () => {
     const res = await axiosSecure.get(`/chkfeedback?participantId=${reg._id}`);
@@ -41,6 +41,7 @@ const FeedbackButton = ({ reg }) => {
     refetch();
     
   };
+  if(isLoading) return <p>' '</p>
 
   return (
     <>
