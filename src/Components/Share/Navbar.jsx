@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import LoadingEle from "./LoadingEle";
+import { toast } from "react-toastify";
 
 
 export default function Navbar() {
@@ -16,6 +17,11 @@ export default function Navbar() {
   name: user?.displayName,
   photo: user?.photoURL
   };
+
+  const hundleLog= ()=>{
+    logoutUser()
+    toast("Logout successfully")
+  }
 
   const navLinkClass = ({ isActive }) =>
     isActive
@@ -98,7 +104,7 @@ export default function Navbar() {
                 <p className="font-semibold text-green-500">{users.name}</p>
                 <hr />
                 <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink> 
-                <button onClick={()=>logoutUser()} className="text-left w-full hover:text-red-500">Logout</button>
+                <button onClick={hundleLog} className="text-left w-full hover:text-red-500">Logout</button>
               </div>
             )}
           </div>

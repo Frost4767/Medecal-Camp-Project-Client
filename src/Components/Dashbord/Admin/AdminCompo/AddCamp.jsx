@@ -4,6 +4,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import LoadingEle from "../../../Share/LoadingEle";
 import { useState } from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const AddCamp = () => {
   const {user,loading}= useAuth()
@@ -23,20 +24,19 @@ const AddCamp = () => {
       email: user?.email,
       participantCount: 0
     };
-    console.log(campData);
+    
 
     try {
       const res = await axiosSecure.post("/addcamp", campData);
 
       if (res.data.insertedId) {
-        alert("✅ Camp added successfully!");
+        toast("✅ Camp added successfully!")
         reset();
       } else {
-        alert("❌ Failed to add camp");
+        toast("❌ Failed to add camp.")
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("❌ Something went wrong.");
+      toast("❌ Something went wrong.")
     }
    };
 

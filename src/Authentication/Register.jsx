@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import SocialLogin from './SocialLogin';
 import useAxios from '../Hooks/useAxios';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,6 +23,7 @@ const Register = () => {
 
         userCreate(data.email, data.password)
             .then(async (result) => {
+              toast("User create successfully")
                 const user = result?.user;
                 // update userinfo in the database
                 const userInfo = {
@@ -43,13 +45,9 @@ const Register = () => {
                     .then(() => {
                         navigate(from);
                     })
-                    .catch(error => {
-                        console.log(error)
-                    })
-
             })
             .catch(error => {
-                console.error(error);
+                toast("Please enter a vaild information")
             })
     }
 

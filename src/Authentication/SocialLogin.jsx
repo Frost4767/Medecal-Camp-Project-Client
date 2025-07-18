@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 import useAxios from '../Hooks/useAxios';
+import { toast } from 'react-toastify';
 
 const SocialLogin = () => {
     const { googleLogin } = useAuth();
@@ -14,6 +15,7 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         googleLogin()
             .then(async (result) => {
+                toast("User login successfully")
                 const user = result?.user;
                 
                 // update userinfo in the database
@@ -28,9 +30,7 @@ const SocialLogin = () => {
 
                 navigate(from);
             })
-            .catch(error => {
-                console.error(error);
-            })
+            
     }
 
     return (
