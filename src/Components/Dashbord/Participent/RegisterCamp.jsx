@@ -9,6 +9,7 @@ import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import ModalPayForm from '../../../Payment/PayForm';
 import FeedbackButton from './FeedbackButton';
+import LoadingEle from '../../Share/LoadingEle';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
@@ -63,7 +64,7 @@ const RegisteredCamps = () => {
     setCurrentPage(1);
   }, [searchTerm]);
 
-  if (isLoading || loading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading || loading) return <LoadingEle></LoadingEle>;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">

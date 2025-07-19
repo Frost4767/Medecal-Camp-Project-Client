@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { FaSearch } from 'react-icons/fa';
+import LoadingEle from '../../Share/LoadingEle';
 
 const ManageRegisteredCamps = () => {
   const axiosSecure = useAxiosSecure();
@@ -57,7 +58,7 @@ const ManageRegisteredCamps = () => {
     currentPage * itemsPerPage
   );
 
-  if (isLoading) return <p className="text-center py-6">Loading...</p>;
+  if (isLoading) return <LoadingEle></LoadingEle>;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">

@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import LoadingEle from './LoadingEle';
 
 
 const AvailableCamps = () => {
@@ -40,7 +41,7 @@ const AvailableCamps = () => {
 
   const filtered = filterAndSortCamps();
 
-  if (isLoading) return <p className="text-center py-10 text-lg font-semibold">Loading...</p>;
+  if (isLoading) return <LoadingEle></LoadingEle>;
 
   return (
     <section className="px-4 sm:px-6 lg:px-12 2xl:px-36 py-12">

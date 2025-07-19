@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import LoadingEle from "../../Share/LoadingEle";
 
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
@@ -38,9 +39,7 @@ const PaymentHistory = () => {
 
   if (isLoading) {
     return (
-      <p className="text-center py-10 text-green-600 font-semibold">
-        Loading payment history...
-      </p>
+      <LoadingEle></LoadingEle>
     );
   }
 

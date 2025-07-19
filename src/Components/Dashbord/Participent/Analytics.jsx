@@ -3,10 +3,11 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 import { FaHeartbeat, FaTrophy, FaStar, FaUsers } from 'react-icons/fa';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import LoadingEle from '../../Share/LoadingEle';
 
 const ParticipantAnalytics = () => {
   const axiosSecure= useAxiosSecure();
-  const { user } = useAuth();
+  const { user,loading } = useAuth();
 
   const { data: registeredCamps = [], isLoading } = useQuery({
     queryKey: ['participantAnalytics', user?.email],
@@ -39,8 +40,8 @@ const ParticipantAnalytics = () => {
         📊 Camp Analytics Dashboard
       </h2>
 
-      {isLoading ? (
-        <div className="text-center text-gray-500">Loading data...</div>
+      {isLoading || loading ? (
+        <LoadingEle></LoadingEle>
       ) : registeredCamps.length === 0 ? (
         <div className="text-center py-10 border border-dashed border-gray-300 rounded-lg text-gray-500 bg-gray-50">
           <p className="text-lg">You haven’t registered in any camp yet.</p>

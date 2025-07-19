@@ -5,6 +5,8 @@ import { FaEdit, FaSearch, FaTrash } from 'react-icons/fa';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAuth from '../../../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import LoadingEle from '../../../Share/LoadingEle';
 
 const ManageCamps = () => {
   const axiosSecure = useAxiosSecure();
@@ -35,6 +37,7 @@ const ManageCamps = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['myCampss']);
+      toast('Update successfully');
       setIsUpdateOpen(false);
     }
   });
@@ -46,6 +49,7 @@ const ManageCamps = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['myCampss']);
+      toast('Delete successfully');
       setIsDeleteOpen(false);
     }
   });
@@ -84,7 +88,7 @@ const ManageCamps = () => {
     }
   }, [filteredCamps,currentPage,totalPages]);
 
-  if (isLoading || loading) return <p>Loading...</p>;
+  if (isLoading || loading) return <LoadingEle></LoadingEle>;
 
   return (
     <section className="p-6 max-w-7xl mx-auto">

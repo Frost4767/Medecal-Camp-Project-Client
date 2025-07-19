@@ -3,7 +3,7 @@ import React from 'react';
 
 const LoadingEle = () => {
     return (
-<div className='flex flex-col justify-center items-center min-h-[calc(100vh-30px)]'> 
+<div className='flex flex-col justify-center items-center min-h-[calc(100vh-30px)]'>  
 <div className="w-24 h-24 relative flex items-center justify-center">
   <div
     className="absolute inset-0 rounded-xl bg-blue-500/20 blur-xl animate-pulse"

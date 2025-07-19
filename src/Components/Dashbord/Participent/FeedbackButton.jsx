@@ -3,6 +3,7 @@ import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { AiFillCheckCircle } from "react-icons/ai";
+import { toast } from 'react-toastify';
 
 const FeedbackButton = ({ reg }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ const FeedbackButton = ({ reg }) => {
       comment,
       participantName: reg.participantName
     });
-    
+    toast("Your feedback submited");
     closeModal();
     refetch();
     

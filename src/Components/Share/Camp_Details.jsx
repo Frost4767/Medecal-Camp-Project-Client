@@ -24,6 +24,8 @@ import {
   FaExclamationTriangle
 } from 'react-icons/fa';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import LoadingEle from './LoadingEle';
+import { toast } from 'react-toastify';
 
 const CampDetails = () => {
   const { campId } = useParams();
@@ -53,12 +55,13 @@ const CampDetails = () => {
     onSuccess: async () => {
       await axiosSecure.patch(`/camp/${campId}/increment-participant`);
       queryClient.invalidateQueries({ queryKey: ['camp', campId] });
+      toast("Camp register successfull");
       setIsOpen(false);
     }
   });
 
   if (isLoading || loading)
-    return <p className="text-center py-10">Loading...</p>;
+    return <LoadingEle></LoadingEle>;
   if (isError)
     return <p className="text-center py-10 text-red-600">Failed to load camp details.</p>;
 

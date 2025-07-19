@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import LoadingEle from '../../Components/Share/LoadingEle';
 
 
 const PopularCamps = () => {
@@ -30,17 +31,17 @@ const PopularCamps = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  if (isLoading)
-    return (
-      <div className="text-center py-20 text-lg font-semibold">
-        Loading popular camps...
-      </div>
-    );
+  
 
   
   const topCamps = [...camps]
     .sort((a, b) => b.participantCount - a.participantCount)
     .slice(0, 6);
+
+    if (isLoading)
+    return (
+      <LoadingEle></LoadingEle>
+    );
 
   return (
     <section
