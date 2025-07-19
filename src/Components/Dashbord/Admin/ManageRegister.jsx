@@ -106,7 +106,7 @@ const ManageRegisteredCamps = () => {
                   <span className={`px-3 py-1 rounded-full text-white font-semibold text-xs ${
                     p.paymentStatus === 'paid' ? 'bg-green-600' : 'bg-yellow-500'
                   }`}>
-                    {p.paymentStatus}
+                    {p.paymentStatus || 'unpaid'}
                   </span>
                 </td>
                 <td className="p-4 capitalize">

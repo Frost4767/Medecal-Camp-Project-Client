@@ -100,7 +100,7 @@ const AvailableCamps = () => {
               className="group relative flex flex-col rounded-2xl bg-white shadow-md hover:shadow-xl transition overflow-hidden border border-blue-100"
             >
               {/* Image */}
-              <div className="w-full aspect-[4/3] overflow-hidden">
+              <div className="w-full aspect-[4/3] overflow-hidden bg-gray-200">
                 <img
                   src={camp.image}
                   alt={camp.name}

@@ -46,7 +46,7 @@ const PopularCamps = () => {
   return (
     <section
       ref={sectionRef}
-      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 py-32 bg-gradient-to-br from-blue-50 to-white"
+      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white"
     >
       <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 mb-12">
         Popular Medical Camps
@@ -82,7 +82,7 @@ const PopularCamps = () => {
                 >
                   {/* Image */}
                   <div
-                    className={`w-full md:w-68 flex-shrink-0 ${
+                    className={`w-full md:w-68 flex-shrink-0 bg-gray-200 ${
                       isLeft ? 'order-1' : 'order-2'
                     }`}
                   >

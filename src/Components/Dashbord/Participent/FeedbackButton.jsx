@@ -36,6 +36,7 @@ const FeedbackButton = ({ reg }) => {
       participantId: reg._id,
       rating,
       comment,
+      camp:reg.campName,
       participantName: reg.participantName
     });
     toast("Your feedback submited");

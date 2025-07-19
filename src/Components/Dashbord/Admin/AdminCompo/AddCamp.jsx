@@ -84,6 +84,7 @@ const AddCamp = () => {
           <div className="flex flex-col">
             <label className="mb-1 font-semibold text-gray-700 text-sm md:text-base">Image URL</label>
             <input
+              required
               type="file"
               onChange={handleImageUpload}
               className="border rounded-md px-3 py-2 text-sm md:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0d542b] transition"
