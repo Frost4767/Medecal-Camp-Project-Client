@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaUserCog } from 'react-icons/fa'
+import { MdOutlinePayment } from "react-icons/md";
+import { TbCashRegister } from "react-icons/tb";
 import { BsGraphUp } from 'react-icons/bs'
 import MenuItem from '../../Share/MenuItem';
 
@@ -7,8 +8,8 @@ const ParticipentContainer = () => {
     return (
         <div>
             <MenuItem icon={BsGraphUp} label='Analytics' address='analytic' />
-            <MenuItem icon={FaUserCog} label='Registered Camps' address='registercamp' />
-            <MenuItem icon={FaUserCog} label='Payment History' address='payment' /> 
+            <MenuItem icon={TbCashRegister} label='Registered Camps' address='registercamp' />
+            <MenuItem icon={MdOutlinePayment} label='Payment History' address='payment' /> 
         </div>
     );
 };
