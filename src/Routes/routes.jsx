@@ -19,6 +19,7 @@ import ManageRegisteredCamps from "../Components/Dashbord/Admin/ManageRegister";
 import ParticipantAnalytics from "../Components/Dashbord/Participent/Analytics";
 import PerticipantRoute from "../Private/PerticipentRoute";
 import AdminRoute from "../Private/AdminRoute";
+import AboutMedicalCamp from "../Components/Share/About";
 
 
 
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <Login></Login>,
+                element: <AboutMedicalCamp></AboutMedicalCamp>,
             },
         ],
     },

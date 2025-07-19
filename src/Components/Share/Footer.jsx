@@ -27,10 +27,7 @@ export default function Footer() {
               <NavLink to="/camps" className={linkClass}>Available Camps</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard" className={linkClass}>Dashboard</NavLink>
-            </li>
-            <li>
-              <NavLink to="/login" className={linkClass}>Join Us</NavLink>
+              <NavLink to="/about" className={linkClass}>About</NavLink>
             </li>
           </ul>
         </div>
