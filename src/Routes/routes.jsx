@@ -17,6 +17,8 @@ import RegisteredCamps from "../Components/Dashbord/Participent/RegisterCamp";
 import PaymentHistory from "../Components/Dashbord/Participent/PaymentHistory";
 import ManageRegisteredCamps from "../Components/Dashbord/Admin/ManageRegister";
 import ParticipantAnalytics from "../Components/Dashbord/Participent/Analytics";
+import PerticipantRoute from "../Private/PerticipentRoute";
+import AdminRoute from "../Private/AdminRoute";
 
 
 
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/camp-details/:campId',
-                element: <Container><CampDetails></CampDetails></Container>,
+                element: <Container><PrivateRoute><CampDetails></CampDetails></PrivateRoute></Container>,
             },
             {
                 path: '/about',
@@ -69,33 +71,33 @@ const router = createBrowserRouter([
         index: true,
         element: (
           
-            <Profile></Profile>
+            <PrivateRoute><Profile></Profile></PrivateRoute>
           
         ),
       },
       {
         path: 'analytic',
-        element: <ParticipantAnalytics></ParticipantAnalytics>
+        element: <PrivateRoute><PerticipantRoute><ParticipantAnalytics></ParticipantAnalytics></PerticipantRoute></PrivateRoute>
       },
       {
         path: 'registercamp',
-        element: <RegisteredCamps></RegisteredCamps>
+        element: <PrivateRoute><PerticipantRoute><RegisteredCamps></RegisteredCamps></PerticipantRoute></PrivateRoute>
       },
       {
         path: 'payment',
-        element: <PaymentHistory></PaymentHistory>
+        element: <PrivateRoute><PerticipantRoute><PaymentHistory></PaymentHistory></PerticipantRoute></PrivateRoute>
       },
       {
         path: 'addcamp',
-        element: <AddCamp></AddCamp>
+        element: <PrivateRoute><AdminRoute><AddCamp></AddCamp></AdminRoute></PrivateRoute>
       },
       {
         path: 'managecamp',
-        element: <ManageCamps></ManageCamps>
+        element: <PrivateRoute><AdminRoute><ManageCamps></ManageCamps></AdminRoute></PrivateRoute>
       },
       {
         path: 'manageresiter',
-        element: <ManageRegisteredCamps></ManageRegisteredCamps>
+        element: <PrivateRoute><AdminRoute><ManageRegisteredCamps></ManageRegisteredCamps></AdminRoute></PrivateRoute>
       },
     ],
    },

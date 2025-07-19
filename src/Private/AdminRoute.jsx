@@ -1,7 +1,7 @@
 import React from 'react';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
 import useRole from '../Hooks/useRole';
-import LoadingEle from '../Components/Share/LoadingEle';
+import LoadingEle from '../Components/Share/LoadingEle'; 
 import { Navigate } from 'react-router';
 
 const AdminRoute = ({ children }) => {

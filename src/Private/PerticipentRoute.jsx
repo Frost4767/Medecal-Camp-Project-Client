@@ -1,11 +1,11 @@
 import React from 'react';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../Hooks/useAuth'; 
 import useRole from '../Hooks/useRole';
 import LoadingEle from '../Components/Share/LoadingEle';
 import { Navigate } from 'react-router';
 
 
-const RiderRoute = ({ children }) => {
+const PerticipantRoute = ({ children }) => {
     const { user, loading } = useAuth()
     const { role, roleLoading } = useRole()
 
@@ -14,10 +14,10 @@ const RiderRoute = ({ children }) => {
     }
 
     if (!user || role !== 'participent') {
-        return <Navigate state={{ from: location.pathname }} to="/forbidden"></Navigate>
+        return <Navigate state={{ from: location.pathname }} to="/forbidden"></Navigate> 
     }
 
     return children;
 };
 
-export default RiderRoute;
+export default PerticipantRoute; 

@@ -4,7 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
 import ProfileModal from './ProfileModal';
 import LoadingEle from '../../Share/LoadingEle';
-import { toast } from 'react-toastify';
+
 
 const Profile = () => {
   const { user, loading } = useAuth();
@@ -15,7 +15,6 @@ const Profile = () => {
     enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/${user?.email}`);
-      toast('WellCome your profile')
       return res.data;
     },
   });
