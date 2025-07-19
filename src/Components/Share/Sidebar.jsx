@@ -20,7 +20,7 @@ const Sidebar = () => {
   const handleToggle = () => {
     setIsActive(!isActive)
   }
-  if (roleLoading) return <p className='font-semibold flex flex-col justify-center items-center max-h-screen'>Loading...</p> 
+  if (roleLoading) return <p className='font-semibold flex flex-col justify-center items-center max-h-screen'>' '</p> 
   return (
     <>
       {/* Small Screen Navbar */}
