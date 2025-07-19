@@ -23,7 +23,7 @@ const ErrorPage = () => {
                 <p className='mb-3 md:mb-8 text-xl font-bold text-gray-900 md:text-2xl'>
                     {error?.error?.message || 'Something Went Wrong!'}
                 </p>
-                <Link className="btn bg-gray-300 rounded-full text-[#ff5835] text-xl font-bold" to='/'>
+                <Link className="btn bg-green-600 px-4 py-2 rounded-full text-white text-xl font-bold" to='/'>
                     Go to Homepage
                 </Link>
             </div>
