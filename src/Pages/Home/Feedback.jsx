@@ -55,7 +55,7 @@ const FeedbackSection = () => {
 
       {/* Feedback Marquee */}
       <div className="mt-10">
-        <h2 className="text-3xl font-extrabold text-green-700 mb-6 text-center">
+        <h2 className="text-4xl font-extrabold text-green-700 mb-6 text-center">
           What Our Participants Say
         </h2>
         <Marquee pauseOnHover speed={40} gradient={false}>
