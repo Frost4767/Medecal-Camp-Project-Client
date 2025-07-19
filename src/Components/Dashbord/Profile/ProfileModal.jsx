@@ -8,8 +8,10 @@ import {
 import { Fragment, useState, useEffect } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
 
 const ProfileModal = ({ userData, refetch }) => {
+  const{updateUserProfile}= useAuth()
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,6 +37,7 @@ const ProfileModal = ({ userData, refetch }) => {
     e.preventDefault();
     try {
       const res = await axiosSecure.patch(`/user/${userData.email}`, formData);
+      updateUserProfile({photoURL: formData?.image})
       if (res.data.modifiedCount > 0) {
         Swal.fire('Success', 'Profile updated successfully!', 'success');
         closeModal();
