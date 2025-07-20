@@ -13,7 +13,7 @@ const AboutMedicalCamp = () => {
       {/* Hero Section */}
       <div className="bg-white shadow-md border-b border-green-200">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-5xl font-extrabold text-green-900 mb-4">
+          <h1 className="text-4xl font-extrabold text-green-900 mb-4">
             Empowering Communities with <span className="text-lime-600">MediCamp</span>
           </h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">

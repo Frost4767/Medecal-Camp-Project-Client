@@ -1,15 +1,16 @@
 import Marquee from "react-fast-marquee";
 import { FaQuoteLeft, FaStar, FaStethoscope, FaHospitalUser, FaHeartbeat, FaHandsHelping } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxios from "../../Hooks/useAxios";
+
 
 const FeedbackSection = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance= useAxios();
 
   const { data: feedbacks = [] } = useQuery({
     queryKey: ["feedbacks"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/feedbacks");
+      const res = await axiosInstance.get("/feedbacks");
       return res.data;
     },
   });
@@ -39,7 +40,7 @@ const FeedbackSection = () => {
   ];
 
   return (
-    <section className="bg-green-50 rounded-3xl shadow-inner my-16 py-16 px-12 space-y-16 mx-auto">
+    <section className="bg-green-50 rounded-3xl shadow-inner my-16 py-16 sm:px-12 px-6 mx-auto">
       {/* Static Relevant Info Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {relevantInfo.map((info, idx) => (

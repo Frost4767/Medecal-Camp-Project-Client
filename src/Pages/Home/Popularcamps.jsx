@@ -10,17 +10,17 @@ import {
   FaMoneyBill,
   FaUsers
 } from 'react-icons/fa';
-import { Link } from 'react-router';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import LoadingEle from '../../Components/Share/LoadingEle';
 
+import LoadingEle from '../../Components/Share/LoadingEle';
+import useAxios from '../../Hooks/useAxios';
+import { Link } from 'react-router';
 
 const PopularCamps = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
   const { data: camps = [], isLoading } = useQuery({
     queryKey: ['popularCamps'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/allcamp');
+      const res = await axiosInstance.get('/allcamp');
       return res.data;
     }
   });
@@ -31,34 +31,28 @@ const PopularCamps = () => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  
-
-  
   const topCamps = [...camps]
     .sort((a, b) => b.participantCount - a.participantCount)
     .slice(0, 6);
 
-    if (isLoading)
-    return (
-      <LoadingEle></LoadingEle>
-    );
+  if (isLoading) return <LoadingEle />;
 
   return (
     <section
       ref={sectionRef}
-      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white"
+      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-br from-blue-50 to-white overflow-x-hidden"
     >
       <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 mb-12">
         Popular Medical Camps
       </h2>
 
-      {/* Timeline container */}
+      {/* Timeline Container */}
       <div className="relative max-w-4xl mx-auto">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 top-0 w-1 bg-gradient-to-b from-green-400 via-blue-500 to-purple-600 rounded-full h-full -translate-x-1/2 shadow-lg"></div>
+        {/* Vertical Line */}
+        <div className="hidden md:block absolute left-1/2 top-0 w-1 bg-gradient-to-b from-green-400 via-blue-500 to-purple-600 rounded-full inset-y-0 -translate-x-1/2 shadow-md z-0" />
 
         {/* Cards */}
-        <div className="space-y-12">
+        <div className="relative z-10 flex flex-col gap-16">
           {topCamps.map((camp, index) => {
             const isLeft = index % 2 === 0;
             return (
@@ -69,32 +63,28 @@ const PopularCamps = () => {
                   isLeft ? 'md:ml-auto md:pr-10' : 'md:mr-auto md:pl-10'
                 }`}
               >
-                {/* Circle on the line */}
+                {/* Circle */}
                 <div
                   className={`hidden md:block absolute top-8 ${
                     isLeft ? '-right-6' : '-left-6'
                   } w-5 h-5 rounded-full bg-gradient-to-tr from-green-400 to-purple-600 shadow-lg border-4 border-white`}
                 ></div>
 
+                {/* Card */}
                 <div
                   className={`flex flex-col md:flex-row items-stretch bg-white rounded-3xl shadow-xl border border-blue-200 hover:shadow-2xl transition-transform duration-300 hover:scale-[1.03] overflow-hidden justify-between`}
-                  style={{ minHeight: '180px' }}
                 >
                   {/* Image */}
                   <div
-                    className={`w-full md:w-68 flex-shrink-0 bg-gray-200 ${
+                    className={`w-full md:w-64 flex-shrink-0 bg-gray-200 ${
                       isLeft ? 'order-1' : 'order-2'
                     }`}
                   >
                     <img
                       src={camp.image}
                       alt={camp.name}
-                      className="w-full h-full object-cover"
-                      style={{ minHeight: '180px' }}
-                      onError={e => {
-                        e.currentTarget.src =
-                          'https://via.placeholder.com/192?text=No+Image';
-                      }}
+                      className="w-full h-full object-cover max-w-full"
+                      
                     />
                   </div>
 
@@ -106,7 +96,7 @@ const PopularCamps = () => {
                         : 'order-2 md:order-1 text-right'
                     } flex-1`}
                   >
-                    <h3 className="text-2xl font-bold text-green-700 text-start">
+                    <h3 className="text-2xl text-start font-bold text-green-700">
                       {camp.name}
                     </h3>
 
@@ -143,6 +133,7 @@ const PopularCamps = () => {
         </div>
       </div>
 
+      {/* See All Camps Button */}
       <div className="flex justify-center mt-24">
         <Link
           to="/camps"

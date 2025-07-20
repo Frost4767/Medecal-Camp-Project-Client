@@ -25,7 +25,7 @@ const MyCarousel = () => {
   ];
 
   return (
-    <div className="w-full h-[80vh] mb-14">
+    <div className="w-full h-[80vh] ">
       <Carousel
         infiniteLoop
         autoPlay

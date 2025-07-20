@@ -7,20 +7,20 @@ import {
   FaUsers
 } from 'react-icons/fa';
 import { Link } from 'react-router';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import LoadingEle from './LoadingEle';
+import useAxios from '../../Hooks/useAxios';
 
 
 const AvailableCamps = () => {
   const [layout, setLayout] = useState('grid-cols-1 md:grid-cols-2 lg:grid-cols-3');
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance= useAxios();
 
   const { data: camps = [], isLoading } = useQuery({
     queryKey: ['allCamps'],
     queryFn: async () => {
-      const res = await axiosSecure('/allcamp');
+      const res = await axiosInstance('/allcamp');
       return res.data;
     }
   });
