@@ -61,15 +61,15 @@ A modern and responsive web application to manage and organize medical camps sea
 
 # Clone Frontend
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-CodesWithRakib.git
-cd b11a11-client-side-CodesWithRakib
+git clone https://github.com/Programming-Hero-Web-Course11/b11a11-client-side-CodesWithshahid.git
+cd b11a11-client-side-CodesWithshahid
 npm install
 npm run dev
 ```
 # Clone Backend
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-CodesWithRakib.git
-cd b11a11-server-side-CodesWithRakib
+git clone https://github.com/Programming-Hero-Web-Course11/b11a11-server-side-CodesWithshahid.git
+cd b11a11-server-side-CodesWitshahid
 npm install
 npm run dev
 ```
@@ -94,20 +94,20 @@ VITE_CLOUD_NAME=your_cloudinary_name
 ### 🔹 Server (.env)
 
 ```env
-PORT=5000
-MONGO_URI=mongodb+srv://your_mongo_uri
-JWT_SECRET=your_secret
-CLOUDINARY_NAME=your_name
-CLOUDINARY_API_KEY=your_key
-CLOUDINARY_API_SECRET=your_secret
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+VITE_BACKEND_URL=http://localhost:5000
+
 ```
 
 ---
 
 ## 📤 Image Upload
 
-- Users can upload product images using Cloudinary
-- Supported on both **Add** and **Update** product forms
+- Users can upload product images using Imgbb
+- Supported on both **Add** and **Update** forms
 - Upload triggered through a secure backend API
 
 ---
@@ -137,42 +137,16 @@ firebase deploy
 
 ---
 
-## 🔧 Future Improvements
-
-- Stripe Payment Integration
-- Admin Dashboard
-- Seller Verification Process
-- Order Management System
-
----
-
-## 🤝 Contributing
-
-Contributions, suggestions, and forks are welcome!
-
-- Check [Issues](https://github.com/codeswithrakib/globira/issues)
-- Submit a PR or feedback
-
-Please follow the [contribution guidelines](CONTRIBUTING.md) for collaboration.
-
----
-
-## 📄 License
-
-Licensed under the **MIT License** — see the [LICENSE](LICENSE) file.
-
----
-
 ## 📫 Contact
 
-📧 Email: [codeswithrakib@gmail.com](mailto:codeswithrakib@gmail.com)
-🔗 LinkedIn: [Rakib Islam](https://linkedin.com/in/codeswithrakib)
+📧 Email: [shaahid.045@gmail.com](mailto:shaahid.045@gmail.com)
+🔗 LinkedIn: [Shahid Islam](https://linkedin.com/in/shaahid-cp)
 
 ---
 
 ## 🧑‍🎓 Author
 
-Made with 💻 by **Md. Rakib Islam**
-Globira Project © 2025
+Made with 💻 by **Md. Shahid Islam**
+Medical Camp Project © 2025
 
 ---
