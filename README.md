@@ -54,58 +54,125 @@ A modern and responsive web application to manage and organize medical camps sea
 
 ---
 
-## ⚙️ Installation & Local Setup
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/medi-camp.git
-   cd medi-camp
-Setup Backend
+## ⚙️ Installation & Setup
 
-bash
-Copy
-Edit
-cd backend
+### 📥 Clone Repositories
+
+# Clone Frontend
+```bash
+git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-CodesWithRakib.git
+cd b11a11-client-side-CodesWithRakib
 npm install
-Create .env file with:
-
-ini
-Copy
-Edit
-PORT=5000
-MONGODB_URI=your_mongo_connection_string
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_CLIENT_EMAIL=your_firebase_client_email
-FIREBASE_PRIVATE_KEY=your_firebase_private_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-bash
-Copy
-Edit
-npm run start
-Setup Frontend
-
-bash
-Copy
-Edit
-cd frontend
-npm install
-Create .env file with:
-
-ini
-Copy
-Edit
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
-VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-VITE_BACKEND_URL=http://localhost:5000
-bash
-Copy
-Edit
 npm run dev
-Open in Browser
+```
+# Clone Backend
+```bash
+git clone https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-CodesWithRakib.git
+cd b11a11-server-side-CodesWithRakib
+npm install
+npm run dev
+```
 
-arduino
-Copy
-Edit
-http://localhost:5173
+---
+
+## 🔒 Environment Variables
+
+### 🔹 Client (.env)
+
+```env
+VITE_API_KEY=your_firebase_key
+VITE_AUTH_DOMAIN=your_firebase_auth
+VITE_PROJECT_ID=your_project_id
+VITE_STORAGE_BUCKET=your_storage_bucket
+VITE_MESSAGING_SENDER_ID=your_sender_id
+VITE_APP_ID=your_app_id
+VITE_API_URL=https://backend-eta-five-56.vercel.app
+VITE_CLOUD_NAME=your_cloudinary_name
+```
+
+### 🔹 Server (.env)
+
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://your_mongo_uri
+JWT_SECRET=your_secret
+CLOUDINARY_NAME=your_name
+CLOUDINARY_API_KEY=your_key
+CLOUDINARY_API_SECRET=your_secret
+```
+
+---
+
+## 📤 Image Upload
+
+- Users can upload product images using Cloudinary
+- Supported on both **Add** and **Update** product forms
+- Upload triggered through a secure backend API
+
+---
+
+## 🚀 Deployment
+
+### 🔹 Frontend (Firebase)
+
+```bash
+npm run build
+firebase deploy
+```
+
+### 🔹 Backend (Vercel Serverless)
+
+- Routes inside `/api/` folder
+- Export handlers using CommonJS/ES6
+- Follow [Vercel Docs](https://vercel.com/docs/functions) for structure
+
+---
+
+## 🧪 Testing
+
+- Backend routes tested via Postman
+- Firebase test users used for auth
+- UI feedback tested via forms, toasts, and edge cases
+
+---
+
+## 🔧 Future Improvements
+
+- Stripe Payment Integration
+- Admin Dashboard
+- Seller Verification Process
+- Order Management System
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and forks are welcome!
+
+- Check [Issues](https://github.com/codeswithrakib/globira/issues)
+- Submit a PR or feedback
+
+Please follow the [contribution guidelines](CONTRIBUTING.md) for collaboration.
+
+---
+
+## 📄 License
+
+Licensed under the **MIT License** — see the [LICENSE](LICENSE) file.
+
+---
+
+## 📫 Contact
+
+📧 Email: [codeswithrakib@gmail.com](mailto:codeswithrakib@gmail.com)
+🔗 LinkedIn: [Rakib Islam](https://linkedin.com/in/codeswithrakib)
+
+---
+
+## 🧑‍🎓 Author
+
+Made with 💻 by **Md. Rakib Islam**
+Globira Project © 2025
+
+---
