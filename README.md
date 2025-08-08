@@ -87,8 +87,7 @@ VITE_PROJECT_ID=your_project_id
 VITE_STORAGE_BUCKET=your_storage_bucket
 VITE_MESSAGING_SENDER_ID=your_sender_id
 VITE_APP_ID=your_app_id
-VITE_API_URL=https://backend-eta-five-56.vercel.app
-VITE_CLOUD_NAME=your_cloudinary_name
+VITE_API_URL=https://backend-eta.vercel.app
 ```
 
 ### 🔹 Server (.env)
