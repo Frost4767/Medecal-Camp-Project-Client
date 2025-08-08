@@ -61,15 +61,15 @@ A modern and responsive web application to manage and organize medical camps sea
 
 # Clone Frontend
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course11/b11a11-client-side-CodesWithshahid.git
-cd b11a11-client-side-CodesWithshahid
+git clone https://github.com/Programming-Hero-Web-Course11/b11a12-client-side-CodesWithshahid.git
+cd b11a12-client-side-CodesWithshahid
 npm install
 npm run dev
 ```
 # Clone Backend
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course11/b11a11-server-side-CodesWithshahid.git
-cd b11a11-server-side-CodesWitshahid
+git clone https://github.com/Programming-Hero-Web-Course11/b11a12-server-side-CodesWithshahid.git
+cd b11a12-server-side-CodesWitshahid
 npm install
 npm run dev
 ```
