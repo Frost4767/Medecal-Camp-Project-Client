@@ -1,12 +1,35 @@
-# React + Vite
+# 🏥 Medi Camp 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive web application to manage and organize medical camps seamlessly. From registration to payment, confirmation, and participant feedback — everything in one place.
 
-Currently, two official plugins are available:
+## 🌐 Live Site
+🔗 [Visit the Live Website](https://comfy-peony-c583b0.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👨‍⚕️ Organizer Credentials
+- **Username (Email):** `admin@gmail.com`  
+- **Password:** `Admin1`
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack & Tools Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Tailwind CSS, Framer Motion, AOS
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** Firebase Auth + Firebase Admin SDK
+- **Payments:** Stripe Integration
+- **State Management:** React Query
+- **Forms:** React Hook Form
+- **UI Libraries:** Material Tailwind, Headless UI, React Icons
+- **Charts & Animations:** Recharts, Lottie, Framer Motion
+- **Others:** Axios, React Toastify, SweetAlert2
+
+## 🔥 Features
+
+- 🔐 **Firebase Authentication** – User login/signup with secure token-based backend protection.
+- 🧑‍⚕️ **Camp Organizer Dashboard** – Manage camps, view participants, and confirm registrations.
+- 📝 **Camp Registration** – Participants can register for camps with detailed personal and emergency information.
+- 💳 **Stripe Payment Integration** – Smooth and secure payment system with transaction history.
+- 🧾 **Payment History** – View all past transactions with payment status and confirmation updates.
+- 🚫 **Conditional Cancellation** – Unpaid participants can cancel their registration anytime before payment.
+- ✅ **Confirmation System** – After successful payment, participant status updates to 'Confirmed'.
+- 💬 **Feedback System** – Participants can give feedback after payment, shown on the landing page.
+- 🔍 **Search & Pagination** – Powerful search by camp name/date/healthcare professional and paginated tables.
+- 📊 **Statistics & Analytics** – Interactive charts for participants and camp data via Recharts.
