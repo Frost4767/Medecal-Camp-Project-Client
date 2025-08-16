@@ -3,9 +3,8 @@ import { FaQuoteLeft, FaStar, FaStethoscope, FaHospitalUser, FaHeartbeat, FaHand
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
 
-
 const FeedbackSection = () => {
-  const axiosInstance= useAxios();
+  const axiosInstance = useAxios();
 
   const { data: feedbacks = [] } = useQuery({
     queryKey: ["feedbacks"],
@@ -15,7 +14,6 @@ const FeedbackSection = () => {
     },
   });
 
-  // Static relevant info data (NOT cards, just info blocks)
   const relevantInfo = [
     {
       icon: <FaStethoscope className="text-green-600 text-3xl" />,
@@ -40,15 +38,15 @@ const FeedbackSection = () => {
   ];
 
   return (
-    <section className="bg-green-50 rounded-3xl shadow-inner my-16 py-16 sm:px-12 px-6 mx-auto">
+    <section className="bg-green-50 dark:bg-gray-900 rounded-3xl shadow-inner my-16 py-16 sm:px-12 px-6 mx-auto transition-colors duration-300">
       {/* Static Relevant Info Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {relevantInfo.map((info, idx) => (
           <div key={idx} className="flex items-start gap-4">
             <div>{info.icon}</div>
             <div>
-              <h4 className="text-green-800 font-semibold text-lg mb-1">{info.title}</h4>
-              <p className="text-gray-700 text-sm">{info.description}</p>
+              <h4 className="text-green-800 dark:text-green-400 font-semibold text-lg mb-1">{info.title}</h4>
+              <p className="text-gray-700 dark:text-gray-200 text-sm">{info.description}</p>
             </div>
           </div>
         ))}
@@ -56,18 +54,18 @@ const FeedbackSection = () => {
 
       {/* Feedback Marquee */}
       <div className="mt-10">
-        <h2 className="text-4xl font-extrabold text-green-700 mb-6 text-center">
+        <h2 className="text-4xl font-extrabold text-green-700 dark:text-green-400 mb-6 text-center">
           What Our Participants Say
         </h2>
         <Marquee pauseOnHover speed={40} gradient={false}>
           {feedbacks.map((fb) => (
             <div
               key={fb._id}
-              className="w-80 mx-4 p-6 rounded-2xl bg-white shadow-lg border border-green-100 flex flex-col justify-between relative overflow-hidden hover:shadow-xl transition duration-300"
+              className="w-80 mx-4 p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-lg dark:border-gray-700 border border-green-100 flex flex-col justify-between relative overflow-hidden hover:shadow-xl transition duration-300"
             >
-              <FaQuoteLeft className="absolute text-green-100 text-7xl top-3 left-3 opacity-10" />
+              <FaQuoteLeft className="absolute text-green-100 dark:text-green-800 text-7xl top-3 left-3 opacity-10" />
 
-              <p className="text-gray-700 text-sm font-medium italic mb-5 z-10 line-clamp-4">
+              <p className="text-gray-700 dark:text-gray-200 text-sm font-medium italic mb-5 z-10 line-clamp-4">
                 “{fb.comment.length > 160 ? fb.comment.slice(0, 160) + "…" : fb.comment}”
               </p>
 
@@ -77,8 +75,8 @@ const FeedbackSection = () => {
                     <FaStar key={i} className="text-yellow-400 text-sm" />
                   ))}
                 </div>
-                <div className="font-semibold text-green-700 text-sm">{fb.participantName}</div>
-                <div className="text-xs text-gray-400">{fb.email}</div>
+                <div className="font-semibold text-green-700 dark:text-green-400 text-sm">{fb.participantName}</div>
+                <div className="text-xs text-gray-400 dark:text-gray-300">{fb.email}</div>
               </div>
             </div>
           ))}

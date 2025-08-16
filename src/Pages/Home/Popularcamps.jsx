@@ -40,9 +40,9 @@ const PopularCamps = () => {
   return (
     <section
       ref={sectionRef}
-      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-br from-blue-50 to-white overflow-x-hidden"
+      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-background dark:to-background overflow-x-hidden transition-colors duration-300"
     >
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 mb-12">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 dark:text-green-400 mb-12">
         Popular Medical Camps
       </h2>
 
@@ -67,16 +67,16 @@ const PopularCamps = () => {
                 <div
                   className={`hidden md:block absolute top-8 ${
                     isLeft ? '-right-6' : '-left-6'
-                  } w-5 h-5 rounded-full bg-gradient-to-tr from-green-400 to-purple-600 shadow-lg border-4 border-white`}
+                  } w-5 h-5 rounded-full bg-gradient-to-tr from-green-400 to-purple-600 shadow-lg border-4 border-white dark:border-gray-800`}
                 ></div>
 
                 {/* Card */}
                 <div
-                  className={`flex flex-col md:flex-row items-stretch bg-white rounded-3xl shadow-xl border border-blue-200 hover:shadow-2xl transition-transform duration-300 hover:scale-[1.03] overflow-hidden justify-between`}
+                  className={`flex flex-col md:flex-row items-stretch bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-blue-200 dark:border-gray-700 hover:shadow-2xl transition-transform duration-300 hover:scale-[1.03] overflow-hidden justify-between`}
                 >
                   {/* Image */}
                   <div
-                    className={`w-full md:w-64 flex-shrink-0 bg-gray-200 ${
+                    className={`w-full md:w-64 flex-shrink-0 bg-gray-200 dark:bg-gray-700 ${
                       isLeft ? 'order-1' : 'order-2'
                     }`}
                   >
@@ -84,7 +84,6 @@ const PopularCamps = () => {
                       src={camp.image}
                       alt={camp.name}
                       className="w-full h-full object-cover max-w-full"
-                      
                     />
                   </div>
 
@@ -96,27 +95,26 @@ const PopularCamps = () => {
                         : 'order-2 md:order-1 text-right'
                     } flex-1`}
                   >
-                    <h3 className="text-2xl text-start font-bold text-green-700">
+                    <h3 className="text-2xl text-start font-bold text-green-700 dark:text-green-400">
                       {camp.name}
                     </h3>
 
-                    <p className="flex items-center gap-2 text-sm text-gray-700">
+                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaMapMarkerAlt className="text-red-500" /> {camp.location}
                     </p>
-                    <p className="flex items-center gap-2 text-sm text-gray-700">
+                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaUserMd className="text-green-600" /> {camp.healthcareProfessional}
                     </p>
-                    <p className="flex items-center gap-2 text-sm text-gray-700">
+                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaCalendarAlt className="text-blue-500" />{' '}
                       {new Date(camp.dateTime).toLocaleDateString()}
                     </p>
-                    <p className="flex items-center gap-2 text-sm text-gray-700">
+                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaMoneyBill className="text-yellow-500" />{' '}
                       {camp.fees === 0 ? 'Free' : `৳${camp.fees}`}
                     </p>
-                    <p className="flex items-center gap-2 text-sm text-gray-700">
-                      <FaUsers className="text-purple-600" />{' '}
-                      {camp.participantCount} Participants
+                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+                      <FaUsers className="text-purple-600" /> {camp.participantCount} Participants
                     </p>
 
                     <Link
@@ -137,7 +135,7 @@ const PopularCamps = () => {
       <div className="flex justify-center mt-24">
         <Link
           to="/camps"
-          className="mt-4 text-center border-2 border-green-500 bg-white hover:text-white hover:bg-green-700 text-green-600 px-5 py-2 rounded-lg font-semibold transition sm:text-xl"
+          className="mt-4 text-center border-2 border-green-500 bg-white dark:bg-gray-700 dark:text-gray-100 hover:text-white hover:bg-green-700 text-green-600 px-5 py-2 rounded-lg font-semibold transition sm:text-xl"
         >
           See All Camps
         </Link>
