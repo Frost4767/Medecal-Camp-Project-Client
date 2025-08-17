@@ -28,7 +28,7 @@ const AboutMedicalCamp = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition"
             >
               <div className="flex justify-center mb-3 text-lime-600 dark:text-lime-400 text-3xl">
                 {stat.icon}
@@ -42,7 +42,7 @@ const AboutMedicalCamp = () => {
 
       {/* Mission */}
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <div className="bg-gradient-to-br from-green-100 to-lime-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl shadow-md p-10 border border-lime-200 dark:border-gray-700">
+        <div className="bg-gradient-to-br from-green-100 to-lime-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl shadow-md p-10 border border-lime-200 dark:border-gray-700">
           <h2 className="text-3xl font-bold text-green-800 dark:text-green-300 mb-6 text-center">Our Mission</h2>
           <p className="text-gray-700 dark:text-gray-300 text-center text-lg leading-loose">
             MediCamp aims to bridge the gap between communities and essential healthcare by organizing accessible, quality, and compassionate medical camps. From preventive screenings to doctor consultations – we’re dedicated to building a healthier future for all.
@@ -61,7 +61,7 @@ const AboutMedicalCamp = () => {
           ].map(({ step, title, text }) => (
             <div
               key={step}
-              className="text-center bg-white dark:bg-gray-800 p-6 rounded-xl border border-green-100 dark:border-gray-700 shadow-sm hover:shadow-md transition"
+              className="text-center bg-white dark:bg-gray-800 p-6 rounded-3xl border border-green-100 dark:border-gray-700 shadow-sm hover:shadow-md transition"
             >
               <div className="bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 font-bold text-xl w-14 h-14 flex items-center justify-center rounded-full mx-auto mb-4">
                 {step}

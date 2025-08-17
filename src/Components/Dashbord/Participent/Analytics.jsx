@@ -55,7 +55,7 @@ const ParticipantAnalytics = () => {
               { title: "Paid Camps", value: paidCount },
               { title: "Unpaid Camps", value: unpaidCount },
             ].map((card, idx) => (
-              <div key={idx} className="bg-green-50 dark:bg-green-900 text-green-800 dark:text-gray-200 border border-green-200 dark:border-green-700 rounded-xl p-6 shadow-md hover:scale-[1.03] transition-transform duration-300">
+              <div key={idx} className="bg-green-50 dark:bg-green-900 text-green-800 dark:text-gray-200 border border-green-200 dark:border-green-700 rounded-3xl p-6 shadow-md hover:scale-[1.03] transition-transform duration-300">
                 <h4 className="text-2xl font-semibold mb-2">{card.value}</h4>
                 <p className="uppercase font-semibold tracking-wide">{card.title}</p>
               </div>
@@ -65,7 +65,7 @@ const ParticipantAnalytics = () => {
           {/* Charts Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
             {/* Bar Chart */}
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6">
+            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-3xl p-6">
               <h3 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">Camp Fees Overview</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={barChartData}>
@@ -79,7 +79,7 @@ const ParticipantAnalytics = () => {
             </div>
 
             {/* Pie Chart */}
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6">
+            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-3xl p-6">
               <h3 className="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200">Payment Status Distribution</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -116,7 +116,7 @@ const ParticipantAnalytics = () => {
                 { icon: <FaStar className="text-3xl mb-2 text-green-600 dark:text-green-400" />, title: "Feedback", desc: "Share your camp feedback to improve our services." },
                 { icon: <FaUsers className="text-3xl mb-2 text-green-600 dark:text-green-400" />, title: "Referral", desc: "Refer a friend and earn discounts on next camp!" },
               ].map((card, idx) => (
-                <div key={idx} className="bg-green-50 dark:bg-green-900 text-green-800 dark:text-gray-200 border border-green-200 dark:border-green-700 rounded-xl p-5 shadow-md hover:scale-[1.03] transition-transform duration-300">
+                <div key={idx} className="bg-green-50 dark:bg-green-900 text-green-800 dark:text-gray-200 border border-green-200 dark:border-green-700 rounded-3xl p-5 shadow-md hover:scale-[1.03] transition-transform duration-300">
                   <div>{card.icon}</div>
                   <p className="text-sm">{card.title}</p>
                   <h4 className="text-base font-medium mt-1">{card.desc}</h4>

@@ -22,8 +22,8 @@ const Profile = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-100 via-lime-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-800 px-4 transition-colors duration-500">
-      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl w-full max-w-3xl transition-colors duration-500">
-        <div className="h-48 bg-gradient-to-r from-green-600 to-lime-500 dark:from-green-800 dark:to-green-600 rounded-t-2xl transition-colors duration-500"></div>
+      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-3xl w-full max-w-3xl transition-colors duration-500">
+        <div className="h-48 bg-gradient-to-r from-green-600 to-lime-500 dark:from-green-800 dark:to-green-600 rounded-t-3xl transition-colors duration-500"></div>
         <div className="flex flex-col items-center -mt-20 px-6 pb-6">
           <img
             src={userData?.image}
@@ -65,7 +65,7 @@ const Profile = () => {
           </div>
 
           <div className="mt-6 flex gap-4">
-            <button className="relative flex items-center gap-2 bg-secondary hover:bg-green-500 text-white dark:bg-green-700 dark:hover:bg-green-800 px-4 py-2 rounded-md shadow transition-colors duration-500">
+            <button className="relative flex items-center gap-2 bg-secondary hover:bg-green-500 text-white dark:bg-secondary dark:hover:bg-green-800 px-4 py-2 rounded-md shadow transition-colors duration-500">
               <FaUserEdit />
               <ProfileModal userData={userData} refetch={refetch} />
             </button>

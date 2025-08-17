@@ -1,16 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useRef } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-import {
-  FaMapMarkerAlt,
-  FaUserMd,
-  FaCalendarAlt,
-  FaMoneyBill,
-  FaUsers
-} from 'react-icons/fa';
-
+import { motion } from 'framer-motion';
+import { FaUserMd, FaCalendarAlt, FaUsers } from 'react-icons/fa';
 import LoadingEle from '../../Components/Share/LoadingEle';
 import useAxios from '../../Hooks/useAxios';
 import { Link } from 'react-router';
@@ -22,14 +12,8 @@ const PopularCamps = () => {
     queryFn: async () => {
       const res = await axiosInstance.get('/allcamp');
       return res.data;
-    }
+    },
   });
-
-  const sectionRef = useRef();
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
 
   const topCamps = [...camps]
     .sort((a, b) => b.participantCount - a.participantCount)
@@ -37,44 +21,43 @@ const PopularCamps = () => {
 
   if (isLoading) return <LoadingEle />;
 
+  // Motion variants
+  const cardVariants = {
+    hiddenLeft: { opacity: 0, x: -50 },
+    hiddenRight: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  };
+
   return (
-    <section
-      ref={sectionRef}
-      className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-background dark:to-background overflow-x-hidden transition-colors duration-300"
-    >
+    <section className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-background dark:to-background overflow-x-hidden transition-colors duration-300">
       <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 dark:text-green-400 mb-12">
         Popular Medical Camps
       </h2>
 
-      {/* Timeline Container */}
       <div className="relative max-w-4xl mx-auto">
-        {/* Vertical Line */}
         <div className="hidden md:block absolute left-1/2 top-0 w-1 bg-gradient-to-b from-green-400 via-blue-500 to-purple-600 rounded-full inset-y-0 -translate-x-1/2 shadow-md z-0" />
 
-        {/* Cards */}
         <div className="relative z-10 flex flex-col gap-16">
           {topCamps.map((camp, index) => {
             const isLeft = index % 2 === 0;
             return (
-              <div
+              <motion.div
                 key={camp._id}
-                data-aos={isLeft ? 'fade-right' : 'fade-left'}
-                className={`relative w-full md:w-3/4 ${
-                  isLeft ? 'md:ml-auto md:pr-10' : 'md:mr-auto md:pl-10'
-                }`}
+                initial={isLeft ? 'hiddenLeft' : 'hiddenRight'}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
+                className={`relative w-full md:w-3/4 ${isLeft ? 'md:ml-auto md:pr-10' : 'md:mr-auto md:pl-10'}`}
               >
-                {/* Circle */}
                 <div
                   className={`hidden md:block absolute top-8 ${
                     isLeft ? '-right-6' : '-left-6'
                   } w-5 h-5 rounded-full bg-gradient-to-tr from-green-400 to-purple-600 shadow-lg border-4 border-white dark:border-gray-800`}
                 ></div>
 
-                {/* Card */}
                 <div
                   className={`flex flex-col md:flex-row items-stretch bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-blue-200 dark:border-gray-700 hover:shadow-2xl transition-transform duration-300 hover:scale-[1.03] overflow-hidden justify-between`}
                 >
-                  {/* Image */}
                   <div
                     className={`w-full md:w-64 flex-shrink-0 bg-gray-200 dark:bg-gray-700 ${
                       isLeft ? 'order-1' : 'order-2'
@@ -87,21 +70,15 @@ const PopularCamps = () => {
                     />
                   </div>
 
-                  {/* Info */}
                   <div
                     className={`p-6 flex flex-col gap-2 ${
-                      isLeft
-                        ? 'order-2 md:order-2 text-left'
-                        : 'order-2 md:order-1 text-right'
+                      isLeft ? 'order-2 md:order-2 text-left' : 'order-2 md:order-1 text-right'
                     } flex-1`}
                   >
                     <h3 className="text-2xl text-start font-bold text-green-700 dark:text-green-400">
                       {camp.name}
                     </h3>
 
-                    {/* <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-                      <FaMapMarkerAlt className="text-red-500" /> {camp.location}
-                    </p> */}
                     <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaUserMd className="text-green-600" /> {camp.healthcareProfessional}
                     </p>
@@ -109,18 +86,13 @@ const PopularCamps = () => {
                       <FaCalendarAlt className="text-blue-500" />{' '}
                       {new Date(camp.dateTime).toLocaleDateString()}
                     </p>
-                    {/* <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-                      <FaMoneyBill className="text-yellow-500" />{' '}
-                      {camp.fees === 0 ? 'Free' : `৳${camp.fees}`}
-                    </p> */}
                     <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaUsers className="text-purple-600" /> {camp.participantCount} Participants
                     </p>
 
-
                     <p className="text-start text-gray-600 dark:text-gray-400 whitespace-pre-line pt-4">
-                       {camp.description}
-                     </p>
+                      {camp.description}
+                    </p>
 
                     <Link
                       to={`/camp-details/${camp._id}`}
@@ -130,13 +102,12 @@ const PopularCamps = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
 
-      {/* See All Camps Button */}
       <div className="flex justify-center mt-24">
         <Link
           to="/camps"

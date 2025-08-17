@@ -98,7 +98,7 @@ const AvailableCamps = () => {
           return (
             <div
               key={camp._id}
-              className="group relative flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition overflow-hidden border border-blue-100 dark:border-gray-700"
+              className="group relative flex flex-col rounded-3xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition overflow-hidden border border-blue-100 dark:border-gray-700"
             >
               {/* Image */}
               <div className="w-full aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-gray-700">

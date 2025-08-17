@@ -67,7 +67,7 @@ export default function Support() {
       {/* Hero Section */}
       <div className="bg-white dark:bg-gray-800 shadow-md border-b border-green-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 dark:text-green-400 mb-4">
+          <h1 className="text-4xl  font-extrabold text-green-900 dark:text-green-400 mb-4">
             Medical Camp <span className="text-lime-600 dark:text-lime-400">Support</span>
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">
@@ -95,7 +95,7 @@ export default function Support() {
           {supportOptions.map((option, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition cursor-pointer"
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition cursor-pointer"
             >
               <div className="bg-lime-200 dark:bg-green-600/40 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-green-700 dark:text-lime-300">
                 {option.icon}
@@ -111,7 +111,7 @@ export default function Support() {
         </div>
 
         {/* Safety Tips */}
-        <div className="bg-gradient-to-br from-green-100 to-lime-100 dark:from-gray-800 dark:to-gray-700 border border-lime-200 dark:border-gray-700 rounded-xl p-6 mb-12 shadow-md">
+        <div className="bg-gradient-to-br from-green-100 to-lime-100 dark:from-gray-800 dark:to-gray-700 border border-lime-200 dark:border-gray-700 rounded-3xl p-6 mb-12 shadow-md">
           <h3 className="text-lg font-semibold text-green-800 dark:text-green-300 mb-3">
             🛡️ Health & Safety Guidelines
           </h3>
@@ -130,7 +130,7 @@ export default function Support() {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-green-100 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-green-100 dark:border-gray-700">
           <div className="p-6 border-b border-green-100 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-green-900 dark:text-green-400">
               Frequently Asked Questions

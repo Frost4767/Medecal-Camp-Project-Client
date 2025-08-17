@@ -61,7 +61,7 @@ const FeedbackSection = () => {
           {feedbacks.map((fb) => (
             <div
               key={fb._id}
-              className="w-80 mx-4 p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-lg dark:border-gray-700 border border-green-100 flex flex-col justify-between relative overflow-hidden hover:shadow-xl transition duration-300"
+              className="w-80 mx-4 p-6 rounded-3xl bg-white dark:bg-gray-800 shadow-lg dark:border-gray-700 border border-green-100 flex flex-col justify-between relative overflow-hidden hover:shadow-xl transition duration-300"
             >
               <FaQuoteLeft className="absolute text-green-100 dark:text-green-800 text-7xl top-3 left-3 opacity-10" />
 

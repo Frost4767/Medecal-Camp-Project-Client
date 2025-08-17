@@ -109,7 +109,7 @@ const ProfileModal = ({ userData, refetch }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-xl transition-colors duration-300">
+                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-3xl bg-white dark:bg-gray-800 p-6 shadow-xl transition-colors duration-300">
                   <DialogTitle className="text-lg font-medium text-secondary mb-4">
                     Update Profile
                   </DialogTitle>

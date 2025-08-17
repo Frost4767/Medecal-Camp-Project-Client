@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const featuredCamps = [
   {
@@ -30,27 +28,36 @@ const featuredCamps = [
   },
 ];
 
-const FeaturedCamps = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
+const FeaturedCamps = () => {
   return (
-    <section className="py-16  bg-blue-50  dark:bg-background  transition-colors duration-300">
+    <section className="py-16 bg-blue-50 dark:bg-background transition-colors duration-300">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12 text-green-800 dark:text-green-400">
           Featured Medical Camps
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {featuredCamps.map((camp) => (
+          {featuredCamps.map((camp, index) => (
             <motion.div
               key={camp.id}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden relative hover:shadow-2xl transition-all duration-300"
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden relative hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.03 }}
-              data-aos="fade-up"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={index}
             >
               {/* Extra info badge */}
-              <span className="absolute top-3 right-3 bg-yellow-400 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-md">
+              <span className="absolute top-3 right-3 bg-green-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-md">
                 {camp.status}
               </span>
 

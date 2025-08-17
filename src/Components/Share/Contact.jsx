@@ -29,7 +29,7 @@ export default function Contact() {
       {/* Hero Section */}
       <div className="bg-white dark:bg-gray-800 shadow-md border-b border-green-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 dark:text-green-400 mb-4">
+          <h1 className="text-4xl  font-extrabold text-green-900 dark:text-green-400 mb-4">
             Contact Our <span className="text-lime-600 dark:text-lime-400">Medical Camp Team</span>
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
@@ -45,7 +45,7 @@ export default function Contact() {
           {contactInfo.map((info, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 text-center border border-green-100 dark:border-gray-700 hover:shadow-xl transition"
             >
               <div className="bg-lime-100 dark:bg-green-700 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-lime-600 dark:text-lime-300">
                 {info.icon}
@@ -57,7 +57,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 border border-green-100 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-md p-8 border border-green-100 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-green-800 dark:text-green-300 mb-6 text-center">
             Send us a Message
           </h2>
@@ -113,7 +113,7 @@ export default function Contact() {
         </div>
 
         {/* FAQ Section */}
-        <div className="mt-12 bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 border border-green-100 dark:border-gray-700">
+        <div className="mt-12 bg-white dark:bg-gray-800 rounded-3xl shadow-md p-8 border border-green-100 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-green-900 dark:text-green-400 mb-6 text-center">
             Frequently Asked Questions
           </h2>

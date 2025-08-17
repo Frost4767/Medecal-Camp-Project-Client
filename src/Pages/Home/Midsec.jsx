@@ -16,7 +16,7 @@ const MedicalCampSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 hover:shadow-xl transition">
             <h4 className="text-lg font-bold text-green-800 dark:text-green-400 mb-2">
               🔬 Free Health Screenings
             </h4>
@@ -25,7 +25,7 @@ const MedicalCampSection = () => {
               detection saves lives.
             </p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 hover:shadow-xl transition">
             <h4 className="text-lg font-bold text-green-800 dark:text-green-400 mb-2">
               👨‍⚕️ Licensed Doctors On Site
             </h4>
@@ -34,7 +34,7 @@ const MedicalCampSection = () => {
               support and referral.
             </p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 hover:shadow-xl transition">
             <h4 className="text-lg font-bold text-green-800 dark:text-green-400 mb-2">
               📍 Nearby & Accessible
             </h4>

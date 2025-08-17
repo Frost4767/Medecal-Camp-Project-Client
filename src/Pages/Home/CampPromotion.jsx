@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const CampPromotion = () => {
   return (
@@ -18,12 +19,14 @@ const CampPromotion = () => {
           <p className="text-lg md:text-xl text-gray-100 dark:text-gray-200">
             Limited seats available. Book now to ensure your spot.
           </p>
+          <Link to='/camps'>
           <motion.button
-            className="bg-[#00a63e] text-white dark:text-gray-900 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300"
+            className="bg-[#00a63e] cursor-pointer text-white dark:text-gray-900 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300"
             whileHover={{ scale: 1.05 }}
           >
             Book Your Spot
           </motion.button>
+          </Link>
         </motion.div>
 
         {/* Right side: illustration / placeholder */}
@@ -37,7 +40,7 @@ const CampPromotion = () => {
             <img
               src="https://i.ibb.co/N6cMtVr8/pexels-karolina-grabowska-4386466-min.jpg"
               alt="doctor"
-              className="w-full h-full object-cover rounded-2xl shadow-lg"
+              className="w-full h-full object-cover rounded-3xl shadow-lg"
             />
           </div>
         </motion.div>
