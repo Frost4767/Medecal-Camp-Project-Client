@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../../../Hooks/useAuth';
 
 const ProfileModal = ({ userData, refetch }) => {
-  const{updateUserProfile}= useAuth()
+  const { updateUserProfile } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ const ProfileModal = ({ userData, refetch }) => {
     e.preventDefault();
     try {
       const res = await axiosSecure.patch(`/user/${userData.email}`, formData);
-      updateUserProfile({photoURL: formData?.image})
+      updateUserProfile({ photoURL: formData?.image });
       if (res.data.modifiedCount > 0) {
         Swal.fire('Success', 'Profile updated successfully!', 'success');
         closeModal();
@@ -50,12 +50,12 @@ const ProfileModal = ({ userData, refetch }) => {
 
   return (
     <>
-      {/* Modal trigger (inside button) */}
-      <span onClick={openModal} className="cursor-pointer">
+      {/* Modal trigger */}
+      <span onClick={openModal} className="cursor-pointer text-white dark:text-primary">
         Update Profile
       </span>
 
-      {/* Modal itself */}
+      {/* Modal */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
           <TransitionChild
@@ -81,54 +81,54 @@ const ProfileModal = ({ userData, refetch }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-all">
-                  <DialogTitle className="text-lg font-medium text-gray-900 mb-4">
+                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-xl transition-colors duration-300">
+                  <DialogTitle className="text-lg font-medium text-secondary mb-4">
                     Update Profile
                   </DialogTitle>
 
                   <form onSubmit={handleUpdate} className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium">Name</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-lime-500 focus:border-lime-500"
+                        className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-lime-500 focus:border-lime-500 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Image URL</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Image URL</label>
                       <input
                         type="text"
                         value={formData.image}
                         onChange={(e) =>
                           setFormData({ ...formData, image: e.target.value })
                         }
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-lime-500 focus:border-lime-500"
+                        className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-lime-500 focus:border-lime-500 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Phone</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
                       <input
                         type="text"
                         value={formData.phone}
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-lime-500 focus:border-lime-500"
+                        className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-lime-500 focus:border-lime-500 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Email (read-only)</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email (read-only)</label>
                       <input
                         type="email"
                         value={userData.email}
                         disabled
-                        className="mt-1 block w-full rounded-md bg-gray-100 border-gray-300 shadow-sm"
+                        className="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-600 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 shadow-sm transition-colors"
                       />
                     </div>
 
@@ -136,13 +136,13 @@ const ProfileModal = ({ userData, refetch }) => {
                       <button
                         type="button"
                         onClick={closeModal}
-                        className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
+                        className="bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 px-4 py-2 rounded-md transition-colors"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="bg-lime-600 hover:bg-lime-700 text-white px-4 py-2 rounded-md"
+                        className="bg-secondary dark:bg-secondary hover:bg-lime-700 dark:hover:bg-lime-600 text-white px-4 py-2 rounded-md transition-colors"
                       >
                         Save
                       </button>

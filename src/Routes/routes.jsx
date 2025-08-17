@@ -20,6 +20,8 @@ import ParticipantAnalytics from "../Components/Dashbord/Participent/Analytics";
 import PerticipantRoute from "../Private/PerticipentRoute";
 import AdminRoute from "../Private/AdminRoute";
 import AboutMedicalCamp from "../Components/Share/About";
+import Contact from "@/Components/Share/Contact";
+import Support from "@/Components/Share/Support";
 
 
 
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <AboutMedicalCamp></AboutMedicalCamp>,
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>,
+            },
+            {
+                path: '/support',
+                element: <Support></Support>,
             },
         ],
     },

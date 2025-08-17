@@ -1,40 +1,41 @@
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import {
   FaCalendarAlt,
   FaMapMarkerAlt,
   FaUserMd,
-  FaUsers
-} from 'react-icons/fa';
-import { Link } from 'react-router';
-import LoadingEle from './LoadingEle';
-import useAxios from '../../Hooks/useAxios';
-
+  FaUsers,
+} from "react-icons/fa";
+import { Link } from "react-router";
+import LoadingEle from "./LoadingEle";
+import useAxios from "../../Hooks/useAxios";
 
 const AvailableCamps = () => {
-  const [layout, setLayout] = useState('grid-cols-1 md:grid-cols-2 lg:grid-cols-3');
-  const [search, setSearch] = useState('');
-  const [sortBy, setSortBy] = useState('');
-  const axiosInstance= useAxios();
+  const [layout, setLayout] = useState(
+    "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+  );
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const axiosInstance = useAxios();
 
   const { data: camps = [], isLoading } = useQuery({
-    queryKey: ['allCamps'],
+    queryKey: ["allCamps"],
     queryFn: async () => {
-      const res = await axiosInstance('/allcamp');
+      const res = await axiosInstance("/allcamp");
       return res.data;
-    }
+    },
   });
 
   const filterAndSortCamps = () => {
     let filtered = [...camps];
-    if (sortBy === 'most-registered') {
+    if (sortBy === "most-registered") {
       filtered.sort((a, b) => b.participantCount - a.participantCount);
-    } else if (sortBy === 'fees') {
+    } else if (sortBy === "fees") {
       filtered.sort((a, b) => a.fees - b.fees);
-    } else if (sortBy === 'alphabetical') {
+    } else if (sortBy === "alphabetical") {
       filtered.sort((a, b) => a.name.localeCompare(b.name));
     }
-    return filtered.filter(camp =>
+    return filtered.filter((camp) =>
       camp.name.toLowerCase().includes(search.toLowerCase())
     );
   };
@@ -44,8 +45,8 @@ const AvailableCamps = () => {
   if (isLoading) return <LoadingEle></LoadingEle>;
 
   return (
-    <section className="px-4 sm:px-6 lg:px-12 2xl:px-36 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 mb-10">
+    <section className="px-4 sm:px-6 lg:px-12 2xl:px-36 py-12 bg-background dark:bg-background transition-colors duration-300">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 dark:text-green-400 mb-10">
         💉 Explore Available Medical Camps
       </h2>
 
@@ -54,13 +55,13 @@ const AvailableCamps = () => {
         <input
           type="text"
           placeholder="Search by camp name..."
-          className="border border-green-300 focus:ring-2 focus:ring-green-400 rounded px-4 py-2 w-full md:w-1/3"
+          className="border border-green-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-green-400 rounded px-4 py-2 w-full md:w-1/3"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         <select
-          className="border border-green-300 focus:ring-2 focus:ring-green-400 rounded px-4 py-2 w-full md:w-1/4"
+          className="border border-green-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-green-400 rounded px-4 py-2 w-full md:w-1/4"
           onChange={(e) => setSortBy(e.target.value)}
         >
           <option value="">Sort By</option>
@@ -71,10 +72,10 @@ const AvailableCamps = () => {
 
         <button
           onClick={() =>
-            setLayout(prev =>
-              prev === 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-                ? 'grid-cols-1 md:grid-cols-2'
-                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+            setLayout((prev) =>
+              prev === "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                ? "grid-cols-1 md:grid-cols-2"
+                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
             )
           }
           className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow-md"
@@ -85,22 +86,22 @@ const AvailableCamps = () => {
 
       {/* Cards */}
       <div className={`grid gap-8 ${layout}`}>
-        {filtered.map(camp => {
+        {filtered.map((camp) => {
           const dateObj = new Date(camp.dateTime);
           const formattedDate = dateObj.toLocaleDateString();
           const formattedTime = dateObj.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
           });
 
           return (
             <div
               key={camp._id}
-              className="group relative flex flex-col rounded-2xl bg-white shadow-md hover:shadow-xl transition overflow-hidden border border-blue-100"
+              className="group relative flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition overflow-hidden border border-blue-100 dark:border-gray-700"
             >
               {/* Image */}
-              <div className="w-full aspect-[4/3] overflow-hidden bg-gray-200">
+              <div className="w-full aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-gray-700">
                 <img
                   src={camp.image}
                   alt={camp.name}
@@ -110,26 +111,30 @@ const AvailableCamps = () => {
 
               {/* Badge */}
               <div className="absolute top-3 right-3 bg-green-600 text-white text-xs px-3 py-1 rounded-full shadow">
-                {camp.fees === 0 ? 'Free' : `৳${camp.fees}`}
+                {camp.fees === 0 ? "Free" : `৳${camp.fees}`}
               </div>
 
               {/* Content */}
               <div className="p-5 flex flex-col gap-2 flex-grow">
-                <h3 className="text-xl font-bold text-green-700 line-clamp-1">{camp.name}</h3>
-                <p className="flex items-center gap-2 text-sm text-gray-600">
+                <h3 className="text-xl font-bold text-green-700 dark:text-green-400 line-clamp-1">
+                  {camp.name}
+                </h3>
+                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <FaCalendarAlt className="text-purple-600" />
                   {formattedDate} at {formattedTime}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-gray-600">
+                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <FaMapMarkerAlt className="text-red-500" /> {camp.location}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-gray-600">
-                  <FaUserMd className="text-blue-500" /> {camp.healthcareProfessional}
+                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <FaUserMd className="text-blue-500" />{" "}
+                  {camp.healthcareProfessional}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-gray-600">
-                  <FaUsers className="text-yellow-600" /> Participants: {camp.participantCount}
+                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <FaUsers className="text-yellow-600" /> Participants:{" "}
+                  {camp.participantCount}
                 </p>
-                <p className="text-sm text-gray-600 mt-1 line-clamp-3">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-3">
                   {camp.description}
                 </p>
                 <div className="mt-auto pt-3">

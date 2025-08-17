@@ -77,6 +77,16 @@ export default function Navbar() {
                     About Us
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/contact" className={navLinkClass}>
+                    Contact
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/support" className={navLinkClass}>
+                    Support
+                  </NavLink>
+                </li>
                 {!user && (
                   <li>
                     <NavLink to="/login" className={navLinkClass}>
@@ -104,6 +114,16 @@ export default function Navbar() {
           <li>
             <NavLink to="/about" className={navLinkClass}>
               About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/support" className={navLinkClass}>
+              Support
             </NavLink>
           </li>
         </ul>

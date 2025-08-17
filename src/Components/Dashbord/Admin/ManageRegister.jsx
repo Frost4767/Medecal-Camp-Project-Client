@@ -41,7 +41,6 @@ const ManageRegisteredCamps = () => {
     }
   };
 
-  // Filtered data based on search
   const filtered = useMemo(() => {
     return participants.filter((p) =>
       [p.campName, p.date, p.healthcareProfessional, p.participantName]
@@ -51,18 +50,17 @@ const ManageRegisteredCamps = () => {
     );
   }, [searchText, participants]);
 
-  // Pagination logic
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const paginatedData = filtered.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  if (isLoading) return <LoadingEle></LoadingEle>;
+  if (isLoading) return <LoadingEle />;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-green-600 mb-6 text-center">
+      <h2 className="text-4xl font-extrabold text-green-600 dark:text-secondary mb-6 text-center">
         👥 Manage Registered Camps
       </h2>
 
@@ -71,22 +69,22 @@ const ManageRegisteredCamps = () => {
         <input
           type="text"
           placeholder="Search by camp name, date or participant"
-          className="w-full px-4 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-600"
+          className="w-full px-4 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
             setCurrentPage(1);
           }}
         />
-        <span className="px-3 py-2 bg-green-600 text-white rounded-r-md">
+        <span className="px-3 py-2 bg-green-600 text-white rounded-r-md flex items-center justify-center dark:bg-green-500">
           <FaSearch />
         </span>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-2xl shadow-lg">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-green-600 text-white text-sm">
+      <div className="overflow-x-auto rounded-2xl shadow-lg bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-gray-200 dark:border-gray-700">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead className="bg-green-600 dark:bg-green-700 text-white text-sm">
             <tr>
               <th className="p-4 text-left">Camp Name</th>
               <th className="p-4 text-left">Fees</th>
@@ -96,26 +94,26 @@ const ManageRegisteredCamps = () => {
               <th className="p-4 text-left">Cancel</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-100 text-sm">
+          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700 text-sm">
             {paginatedData.map((p) => (
-              <tr key={p._id} className="hover:bg-green-50 transition duration-200">
-                <td className="p-4">{p.campName}</td>
-                <td className="p-4">৳{p.campFees}</td>
-                <td className="p-4">{p.participantName}</td>
+              <tr key={p._id} className="hover:bg-green-50 dark:hover:bg-gray-700 transition duration-200">
+                <td className="p-4 text-gray-800 dark:text-gray-200">{p.campName}</td>
+                <td className="p-4 text-gray-800 dark:text-gray-200">৳{p.campFees}</td>
+                <td className="p-4 text-gray-800 dark:text-gray-200">{p.participantName}</td>
                 <td className="p-4">
                   <span className={`px-3 py-1 rounded-full text-white font-semibold text-xs ${
-                    p.paymentStatus === 'paid' ? 'bg-green-600' : 'bg-yellow-500'
+                    p.paymentStatus === 'paid' ? 'bg-green-600 dark:bg-green-500' : 'bg-yellow-500 dark:bg-yellow-600'
                   }`}>
                     {p.paymentStatus || 'unpaid'}
                   </span>
                 </td>
-                <td className="p-4 capitalize">
+                <td className="p-4 capitalize text-gray-800 dark:text-gray-200">
                   {p.confirmationStatus || 'Pending'}
                 </td>
                 <td className="p-4">
                   <button
                     onClick={() => handleCancel(p._id)}
-                    className="bg-red-600 text-white px-3 py-1 rounded-full text-xs shadow hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-transform transform hover:scale-105"
+                    className="bg-red-600 dark:bg-red-700 text-white px-3 py-1 rounded-full text-xs shadow hover:bg-red-700 dark:hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed transition-transform transform hover:scale-105"
                     disabled={p.paymentStatus === 'paid' && p.confirmationStatus === 'confirmed'}
                   >
                     Cancel
@@ -127,7 +125,7 @@ const ManageRegisteredCamps = () => {
         </table>
 
         {filtered.length === 0 && (
-          <div className="text-center py-6 text-gray-500 text-sm">
+          <div className="text-center py-6 text-gray-500 dark:text-gray-400 text-sm">
             No participants found.
           </div>
         )}
@@ -138,7 +136,7 @@ const ManageRegisteredCamps = () => {
         <div className="flex justify-center items-center gap-2 mt-6">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            className="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700 disabled:opacity-50"
+            className="px-3 py-1 rounded bg-green-600 dark:bg-green-500 text-white hover:bg-green-700 dark:hover:bg-green-600 disabled:opacity-50"
             disabled={currentPage === 1}
           >
             Prev
@@ -147,10 +145,10 @@ const ManageRegisteredCamps = () => {
             <button
               key={i}
               onClick={() => setCurrentPage(i + 1)}
-              className={`px-3 py-1 rounded ${
+              className={`px-3 py-1 rounded transition ${
                 currentPage === i + 1
-                  ? 'bg-green-700 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-green-100'
+                  ? 'bg-green-700 dark:bg-green-600 text-white'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-green-100 dark:hover:bg-green-500'
               }`}
             >
               {i + 1}
@@ -158,7 +156,7 @@ const ManageRegisteredCamps = () => {
           ))}
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            className="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700 disabled:opacity-50"
+            className="px-3 py-1 rounded bg-green-600 dark:bg-green-500 text-white hover:bg-green-700 dark:hover:bg-green-600 disabled:opacity-50"
             disabled={currentPage === totalPages}
           >
             Next

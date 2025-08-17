@@ -64,31 +64,33 @@ const RegisteredCamps = () => {
     setCurrentPage(1);
   }, [searchTerm]);
 
-  if (isLoading || loading) return <LoadingEle></LoadingEle>;
+  if (isLoading || loading) return <LoadingEle />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-green-600 mb-6 text-center">
+      <h2 className="text-4xl font-extrabold text-green-600 dark:text-secondary mb-6 text-center">
         🎪 Registered Camps
       </h2>
 
+      {/* Search */}
       <div className="max-w-md mx-auto mb-6 flex">
-              <input
-                type="text"
-                placeholder="Search by camp name, date or participant"
-                className="w-full px-4 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-600"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <span className="px-3 py-2 bg-green-600 text-white rounded-r-md">
-                <FaSearch />
-              </span>
-        </div>
+        <input
+          type="text"
+          placeholder="Search by camp name, date or participant"
+          className="w-full px-4 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-600 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <span className="px-3 py-2 bg-green-600 text-white rounded-r-md flex items-center justify-center dark:bg-green-500">
+          <FaSearch />
+        </span>
+      </div>
 
-      <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
+      {/* Table */}
+      <div className="bg-white shadow-2xl rounded-2xl overflow-hidden dark:bg-gray-900/70 dark:backdrop-blur-md border border-gray-200 dark:border-gray-700">
         <div className="overflow-x-auto">
           <table className="min-w-full text-left border-collapse text-sm">
-            <thead className="bg-green-600 text-white">
+            <thead className="bg-green-600 dark:bg-green-700 text-white">
               <tr>
                 <th className="px-6 py-4 font-semibold">Camp</th>
                 <th className="px-6 py-4 font-semibold">Fees</th>
@@ -98,50 +100,50 @@ const RegisteredCamps = () => {
                 <th className="px-6 py-4 font-semibold">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
-              {paginatedData.map((reg) => (
-                <tr key={reg._id} className="hover:bg-green-50 transition duration-200">
-                  <td className="px-6 py-4 text-gray-800 font-medium">{reg.campName}</td>
-                  <td className="px-6 py-4 text-gray-700 flex items-center gap-1">
-                    <FaMoneyBill className="text-green-600" /> ৳{reg.campFees}
-                  </td>
-                  <td className="px-6 py-4 text-gray-700">{reg.participantName}</td>
-                  <td className="px-6 py-4">
-                    {reg.paymentStatus === 'paid' ? (
-                      <span className="text-green-600 font-semibold flex items-center gap-1">
-                        <FaRegCheckCircle /> Paid
-                      </span>
-                    ) : (
-                      <Elements stripe={stripePromise}>
-                        <ModalPayForm reg={reg} refetch={refetch} />
-                      </Elements>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 capitalize text-gray-700">
-                    {reg.confirmationStatus || 'Pending'}
-                  </td>
-                  <td className="px-6 py-4 space-x-2">
-                    {reg.paymentStatus !== 'paid' && (
-                      <button
-                        onClick={() => handleCancel(reg._id)}
-                        className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2 rounded-full shadow-md transition-transform transform hover:scale-105 flex items-center gap-1"
-                      >
-                        <MdCancel /> Cancel
-                      </button>
-                    )}
-                    {reg.paymentStatus === 'paid' && <FeedbackButton reg={reg} />}
+            <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+              {paginatedData.length > 0 ? (
+                paginatedData.map((reg) => (
+                  <tr key={reg._id} className="hover:bg-green-50 dark:hover:bg-gray-700 transition duration-200">
+                    <td className="px-6 py-4 text-gray-800 dark:text-gray-200 font-medium">{reg.campName}</td>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                      <FaMoneyBill className="text-green-600 dark:text-green-400" /> ৳{reg.campFees}
+                    </td>
+                    <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{reg.participantName}</td>
+                    <td className="px-6 py-4">
+                      {reg.paymentStatus === 'paid' ? (
+                        <span className="text-green-600 dark:text-green-400 font-semibold flex items-center gap-1">
+                          <FaRegCheckCircle /> Paid
+                        </span>
+                      ) : (
+                        <Elements stripe={stripePromise}>
+                          <ModalPayForm reg={reg} refetch={refetch} />
+                        </Elements>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 capitalize text-gray-700 dark:text-gray-300">{reg.confirmationStatus || 'Pending'}</td>
+                    <td className="px-6 py-4 space-x-2">
+                      {reg.paymentStatus !== 'paid' && (
+                        <button
+                          onClick={() => handleCancel(reg._id)}
+                          className="bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white text-sm px-4 py-2 rounded-full shadow-md transition-transform transform hover:scale-105 flex items-center gap-1"
+                        >
+                          <MdCancel /> Cancel
+                        </button>
+                      )}
+                      {reg.paymentStatus === 'paid' && <FeedbackButton reg={reg} />}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-center py-6 text-gray-500 dark:text-gray-400 text-lg">
+                    No registered camps available.
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
-
-        {paginatedData.length === 0 && (
-          <div className="text-center py-6 text-gray-500 text-lg">
-            No registered camps available.
-          </div>
-        )}
       </div>
 
       {/* Pagination */}
@@ -149,17 +151,17 @@ const RegisteredCamps = () => {
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
-          className="px-3 py-1 bg-green-600 text-white rounded disabled:opacity-50"
+          className="px-3 py-1 bg-green-600 dark:bg-green-500 text-white rounded disabled:opacity-50 hover:bg-green-700 dark:hover:bg-green-600 transition"
         >
           Prev
         </button>
-        <span className="text-sm">
-          Page <strong>{currentPage}</strong> of {totalPages}
+        <span className="text-sm dark:text-gray-200">
+          Page <strong>{currentPage}</strong> of {totalPages || 1}
         </span>
         <button
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 bg-green-600 text-white rounded disabled:opacity-50"
+          disabled={currentPage === totalPages || totalPages === 0}
+          className="px-3 py-1 bg-green-600 dark:bg-green-500 text-white rounded disabled:opacity-50 hover:bg-green-700 dark:hover:bg-green-600 transition"
         >
           Next
         </button>
