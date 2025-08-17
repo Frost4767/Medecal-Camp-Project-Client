@@ -22,6 +22,7 @@ import AdminRoute from "../Private/AdminRoute";
 import AboutMedicalCamp from "../Components/Share/About";
 import Contact from "@/Components/Share/Contact";
 import Support from "@/Components/Share/Support";
+import AdminParticipantAnalytics from "@/Components/Dashbord/Admin/AdminCompo/AdminParticipantAnalytics";
 
 
 
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: 'addcamp',
         element: <PrivateRoute><AdminRoute><AddCamp></AddCamp></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'adminanalytic',
+        element: <PrivateRoute><AdminRoute><AdminParticipantAnalytics></AdminParticipantAnalytics></AdminRoute></PrivateRoute>
       },
       {
         path: 'managecamp',

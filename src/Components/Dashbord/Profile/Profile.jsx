@@ -50,9 +50,9 @@ const Profile = () => {
                 </p>
               </div>
               <div>
-                <p className="font-medium">Account Created</p>
+                <p className="font-medium">Address</p>
                 <p className="text-gray-900 dark:text-gray-100">
-                  {new Date(userData?.created_at).toLocaleDateString()}
+                  {userData?.address || 'Not set'}
                 </p>
               </div>
               <div>

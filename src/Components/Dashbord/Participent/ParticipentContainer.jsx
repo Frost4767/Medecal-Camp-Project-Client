@@ -7,7 +7,7 @@ import MenuItem from '../../Share/MenuItem';
 const ParticipentContainer = () => {
     return (
         <div>
-            <MenuItem icon={BsGraphUp} label='Analytics' address='analytic' />
+            <MenuItem icon={BsGraphUp} label='Overview' address='analytic' />
             <MenuItem icon={TbCashRegister} label='Registered Camps' address='registercamp' />
             <MenuItem icon={MdOutlinePayment} label='Payment History' address='payment' /> 
         </div>
