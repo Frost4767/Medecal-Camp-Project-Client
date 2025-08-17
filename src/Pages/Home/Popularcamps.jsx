@@ -99,9 +99,9 @@ const PopularCamps = () => {
                       {camp.name}
                     </h3>
 
-                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+                    {/* <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaMapMarkerAlt className="text-red-500" /> {camp.location}
-                    </p>
+                    </p> */}
                     <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaUserMd className="text-green-600" /> {camp.healthcareProfessional}
                     </p>
@@ -109,13 +109,18 @@ const PopularCamps = () => {
                       <FaCalendarAlt className="text-blue-500" />{' '}
                       {new Date(camp.dateTime).toLocaleDateString()}
                     </p>
-                    <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+                    {/* <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaMoneyBill className="text-yellow-500" />{' '}
                       {camp.fees === 0 ? 'Free' : `৳${camp.fees}`}
-                    </p>
+                    </p> */}
                     <p className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
                       <FaUsers className="text-purple-600" /> {camp.participantCount} Participants
                     </p>
+
+
+                    <p className="text-start text-gray-600 dark:text-gray-400 whitespace-pre-line pt-4">
+                       {camp.description}
+                     </p>
 
                     <Link
                       to={`/camp-details/${camp._id}`}

@@ -123,17 +123,17 @@ const AvailableCamps = () => {
                   <FaCalendarAlt className="text-purple-600" />
                   {formattedDate} at {formattedTime}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                {/* <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <FaMapMarkerAlt className="text-red-500" /> {camp.location}
-                </p>
+                </p> */}
                 <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <FaUserMd className="text-blue-500" />{" "}
                   {camp.healthcareProfessional}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                {/* <p className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <FaUsers className="text-yellow-600" /> Participants:{" "}
                   {camp.participantCount}
-                </p>
+                </p> */}
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-3">
                   {camp.description}
                 </p>

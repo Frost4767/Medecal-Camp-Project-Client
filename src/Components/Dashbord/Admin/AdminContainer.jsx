@@ -7,7 +7,7 @@ import { MdAddChart } from "react-icons/md";
 const AdminContainer = () => {
     return (
         <div>
-            <MenuItem icon={MdAddChart } label='Overview' address='adminanalytic' />
+            <MenuItem icon={BsGraphUp } label='Overview' address='adminanalytic' />
             <MenuItem icon={MdAddChart } label='Add camp' address='addcamp' />
             <MenuItem icon={FaUserCog} label='Manage Camp' address='managecamp' />
             <MenuItem icon={FaUserCog} label='Manage Registered' address='manageresiter' />
