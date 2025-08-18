@@ -28,15 +28,29 @@ const ManageRegisteredCamps = () => {
       confirmButtonColor: '#059669',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, cancel it!',
+      background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+      color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827'
     });
 
     if (confirm.isConfirmed) {
       try {
         await axiosSecure.delete(`/cancel-camp/${id}`);
         refetch();
-        Swal.fire('Cancelled!', 'Registration has been cancelled.', 'success');
+        Swal.fire({
+          title: 'Cancelled!',
+          text: 'Registration has been cancelled.',
+          icon: 'success',
+          background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+          color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827'
+        });
       } catch (error) {
-        Swal.fire('Error!', 'Failed to cancel registration.', 'error');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to cancel registration.',
+          icon: 'error',
+          background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+          color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827'
+        });
       }
     }
   };
@@ -60,7 +74,7 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h2 className="text-4xl font-extrabold text-green-600 dark:text-secondary mb-6 text-center">
+      <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md mb-6 text-center">
         👥 Manage Registered Camps
       </h2>
 

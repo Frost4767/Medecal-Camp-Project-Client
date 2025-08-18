@@ -43,7 +43,7 @@ const PaymentHistory = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-4xl font-extrabold text-green-600 dark:text-secondary mb-6 text-center">
+      <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md mb-6 text-center">
         💳 Payment History
       </h2>
 

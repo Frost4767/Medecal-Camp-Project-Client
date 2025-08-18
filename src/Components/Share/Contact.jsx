@@ -29,7 +29,7 @@ export default function Contact() {
       {/* Hero Section */}
       <div className="bg-white dark:bg-gray-800 shadow-md border-b border-green-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl  font-extrabold text-green-900 dark:text-green-400 mb-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-green-900 dark:text-green-400 mb-4">
             Contact Our <span className="text-lime-600 dark:text-lime-400">Medical Camp Team</span>
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">

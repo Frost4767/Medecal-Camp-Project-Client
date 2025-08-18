@@ -16,7 +16,6 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 const RegisteredCamps = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [selectedReg, setSelectedReg] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
@@ -38,12 +37,42 @@ const RegisteredCamps = () => {
       showCancelButton: true,
       confirmButtonColor: '#059669',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, cancel it!'
+      confirmButtonText: 'Yes, cancel it!',
+      background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+      color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827',
+      customClass: {
+        confirmButton: 'rounded-md px-4 py-2 hover:scale-105 transition-transform',
+        cancelButton: 'rounded-md px-4 py-2 hover:scale-105 transition-transform'
+      }
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axiosSecure.delete(`/cancel-registration/${id}`);
-        refetch();
-        Swal.fire('Cancelled!', 'The registration has been cancelled.', 'success');
+        try {
+          await axiosSecure.delete(`/cancel-registration/${id}`);
+          refetch();
+          Swal.fire({
+            title: 'Cancelled!',
+            text: 'The registration has been cancelled.',
+            icon: 'success',
+            background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+            color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827',
+            confirmButtonColor: '#059669',
+            customClass: {
+              confirmButton: 'rounded-md px-4 py-2 hover:scale-105 transition-transform'
+            }
+          });
+        } catch (error) {
+          Swal.fire({
+            title: 'Error!',
+            text: 'Failed to cancel registration.',
+            icon: 'error',
+            background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#fff',
+            color: document.documentElement.classList.contains('dark') ? '#f9fafb' : '#111827',
+            confirmButtonColor: '#d33',
+            customClass: {
+              confirmButton: 'rounded-md px-4 py-2 hover:scale-105 transition-transform'
+            }
+          });
+        }
       }
     });
   };
@@ -60,15 +89,13 @@ const RegisteredCamps = () => {
     currentPage * rowsPerPage
   );
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm]);
+  useEffect(() => setCurrentPage(1), [searchTerm]);
 
   if (isLoading || loading) return <LoadingEle />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-4xl font-extrabold text-green-600 dark:text-secondary mb-6 text-center">
+      <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md mb-6 text-center">
         🎪 Registered Camps
       </h2>
 

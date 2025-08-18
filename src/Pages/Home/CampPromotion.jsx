@@ -14,7 +14,7 @@ const CampPromotion = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl text-black md:text-5xl font-extrabold dark:text-gray-100">
-            Join Our <span className="text-[#016630] dark:text-[#00a63e]">Free Health Checkup Camp</span>!
+            Join Our <span className="bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">Free Health Checkup Camp</span>!
           </h2>
           <p className="text-lg md:text-xl text-gray-100 dark:text-gray-200">
             Limited seats available. Book now to ensure your spot.

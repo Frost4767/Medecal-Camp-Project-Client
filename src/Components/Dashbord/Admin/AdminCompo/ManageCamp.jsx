@@ -90,7 +90,7 @@ const ManageCamps = () => {
 
   return (
     <section className="p-6 max-w-7xl mx-auto">
-      <h2 className="text-4xl font-extrabold mb-8 text-center text-green-700 dark:text-secondary">🌿 Manage Your Camps</h2>
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-center bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">🌿 Manage Your Camps</h2>
 
       {/* Search */}
       <div className="max-w-md mx-auto mb-6 flex">

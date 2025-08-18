@@ -46,7 +46,7 @@ const AvailableCamps = () => {
 
   return (
     <section className="px-4 sm:px-6 lg:px-12 2xl:px-36 py-12 bg-background dark:bg-background transition-colors duration-300">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-green-800 dark:text-green-400 mb-10">
+      <h2 className="text-3xl md:text-5xl font-bold text-center bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md mb-10">
         💉 Explore Available Medical Camps
       </h2>
 

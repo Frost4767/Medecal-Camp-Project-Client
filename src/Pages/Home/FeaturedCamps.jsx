@@ -39,42 +39,49 @@ const cardVariants = {
 
 const FeaturedCamps = () => {
   return (
-    <section className="py-16 bg-blue-50 dark:bg-background transition-colors duration-300">
+    <section className="py-20 bg-background transition-colors duration-500">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-green-800 dark:text-green-400">
-          Featured Medical Camps
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">
+          <span className="bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
+            Featured Medical Camps
+          </span>
         </h2>
+
         <div className="grid md:grid-cols-3 gap-8">
           {featuredCamps.map((camp, index) => (
             <motion.div
               key={camp.id}
-              className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden relative hover:shadow-2xl transition-all duration-300"
-              whileHover={{ scale: 1.03 }}
+              className="relative rounded-3xl shadow-lg bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl border border-white/30 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-500"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               custom={index}
             >
-              {/* Extra info badge */}
-              <span className="absolute top-3 right-3 bg-green-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-md">
+              {/* Status badge */}
+              <span className="absolute top-4 right-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow-md z-10">
                 {camp.status}
               </span>
 
-              <img
-                src={camp.image}
-                alt={camp.name}
-                className="w-full h-48 object-cover"
-              />
+              {/* Image */}
+              <div className="w-full h-48 overflow-hidden rounded-t-3xl">
+                <img
+                  src={camp.image}
+                  alt={camp.name}
+                  className="w-full h-full object-cover transform transition duration-500 hover:scale-110"
+                />
+              </div>
+
+              {/* Content */}
               <div className="p-6 space-y-2">
                 <h3 className="text-xl font-bold text-green-700 dark:text-green-300">
                   {camp.name}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Date:</span> {camp.date}
+                  <span className="font-semibold">📅 Date:</span> {camp.date}
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Location:</span> {camp.location}
+                  <span className="font-semibold">📍 Location:</span> {camp.location}
                 </p>
               </div>
             </motion.div>

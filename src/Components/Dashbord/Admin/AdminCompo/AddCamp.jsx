@@ -53,7 +53,7 @@ const AddCamp = () => {
   return (
     <section className="min-h-screen bg-background dark:bg-background flex flex-col items-center justify-center py-12 px-4">
       <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl max-w-4xl w-full p-8 md:p-12 transition-colors">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-secondary to-secondary mb-4 drop-shadow-md">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
           Add A Medical Camp
         </h2>
         <p className="text-center text-sm md:text-base text-gray-600 dark:text-gray-300 mb-10 max-w-xl mx-auto">

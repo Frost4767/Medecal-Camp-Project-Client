@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { FaUserEdit } from 'react-icons/fa';
+import { 
+  FaUserEdit, FaEnvelope, FaPhone, FaMapMarkerAlt, 
+  FaRegClock, FaIdBadge, FaStar, FaHeartbeat, FaCalendarAlt, 
+  FaUsersCog, FaClipboardList 
+} from 'react-icons/fa';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
 import ProfileModal from './ProfileModal';
@@ -21,59 +25,78 @@ const Profile = () => {
   if (isLoading || loading) return <LoadingEle />;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-100 via-lime-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-800 px-4 transition-colors duration-500">
-      <div className="bg-white dark:bg-gray-800 shadow-xl rounded-3xl w-full max-w-3xl transition-colors duration-500">
-        <div className="h-48 bg-gradient-to-r from-green-600 to-lime-500 dark:from-green-800 dark:to-green-600 rounded-t-3xl transition-colors duration-500"></div>
-        <div className="flex flex-col items-center -mt-20 px-6 pb-6">
-          <img
-            src={userData?.image}
-            alt="profile"
-            className="w-28 h-28 rounded-full border-4 border-white dark:border-gray-700 object-cover shadow-lg bg-gray-300 dark:bg-gray-600 transition-colors duration-500"
-          />
-          <p className="mt-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-            {userData?.name}
-          </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-            Role: {userData?.role}
-          </p>
+    <div className="min-h-screen px-4 py-10 bg-gradient-to-tr from-background via-background to-background dark:from-background dark:via-background dark:to-background">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Profile Header */}
+        <div className="relative flex flex-col md:flex-row items-center bg-white/20 dark:bg-gray-800/30 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/30 dark:border-gray-700/50">
+          {/* Profile Image */}
+          <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto md:mx-0 overflow-hidden rounded-full ring-4 ring-green-400 dark:ring-green-600 shadow-xl">
+            <img
+              src={userData?.image || '/default-profile.png'}
+              alt="profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-          <div className="w-full bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mt-4 transition-colors duration-500">
-            <div className="grid md:grid-cols-2 gap-4 text-gray-700 dark:text-gray-200 text-sm">
-              <div>
-                <p className="font-medium">Email</p>
-                <p className="text-gray-900 dark:text-gray-100">{userData?.email}</p>
-              </div>
-              <div>
-                <p className="font-medium">Phone</p>
-                <p className="text-gray-900 dark:text-gray-100">
-                  {userData?.phone || 'Not set'}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">Address</p>
-                <p className="text-gray-900 dark:text-gray-100">
-                  {userData?.address || 'Not set'}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">Last Login</p>
-                <p className="text-gray-900 dark:text-gray-100">
-                  {new Date(userData?.last_loggedIn).toLocaleString()}
-                </p>
-              </div>
+          {/* Profile Details */}
+          <div className="mt-6 md:mt-0 md:ml-8 text-center md:text-left flex-1">
+            <h1 className="text-4xl font-extrabold bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
+              {userData?.name}
+            </h1>
+            <p className="text-base text-gray-600 dark:text-gray-400 mt-2">
+              {userData?.role === "admin" ? "Administrator" : "Registered User"}
+            </p>
+
+            {/* Update Profile Button */}
+            <div className="mt-6 flex justify-center md:justify-start">
+              <button className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-lime-500 hover:from-lime-500 hover:to-green-500 text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-green-300/50 dark:hover:shadow-green-900/50 transition-all">
+                <FaUserEdit />
+                <ProfileModal userData={userData} refetch={refetch} />
+              </button>
             </div>
           </div>
-
-          <div className="mt-6 flex gap-4">
-            <button className="relative flex items-center gap-2 bg-secondary hover:bg-green-500 text-white dark:bg-secondary dark:hover:bg-green-800 px-4 py-2 rounded-md shadow transition-colors duration-500">
-              <FaUserEdit />
-              <ProfileModal userData={userData} refetch={refetch} />
-            </button>
-          </div>
         </div>
+
+        {/* Info Section */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <InfoCard icon={<FaEnvelope />} title="Email" value={userData?.email} />
+          <InfoCard icon={<FaPhone />} title="Phone" value={userData?.phone || 'Not set'} />
+          <InfoCard icon={<FaMapMarkerAlt />} title="Address" value={userData?.address || 'Not set'} />
+          <InfoCard icon={<FaRegClock />} title="Last Login" value={userData?.last_loggedIn ? new Date(userData.last_loggedIn).toLocaleString() : 'N/A'} />
+          <InfoCard icon={<FaIdBadge />} title="Member ID" value={`MCMS-${userData?._id?.slice(-6) || '000000'}`} />
+          <InfoCard icon={<FaCalendarAlt />} title="Joined On" value={userData?.createdAt ? new Date(userData.createdAt).toLocaleDateString() : 'Unknown'} />
+        </div>
+
+        {/* Role Based Section */}
+        {userData?.role === "user" && (
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoCard icon={<FaHeartbeat />} title="Health Credits" value={userData?.credits || '50 Free Checkup Credits'} />
+            <InfoCard icon={<FaStar />} title="Account Status" value={userData?.status || 'Active'} />
+          </div>
+        )}
+
+        {userData?.role === "admin" && (
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoCard icon={<FaUsersCog />} title="Total Users Managed" value="120+" />
+            <InfoCard icon={<FaClipboardList />} title="Total Camps Organized" value="35+" />
+          </div>
+        )}
       </div>
     </div>
   );
 };
+
+const InfoCard = ({ icon, title, value }) => (
+  <div className="group flex items-center gap-4 bg-white/30 dark:bg-gray-800/40 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/50 hover:scale-[1.04] hover:shadow-xl hover:shadow-green-300/40 dark:hover:shadow-green-900/40 transition-all">
+    <div className="text-green-600 dark:text-green-400 text-3xl group-hover:scale-110 transition-transform">
+      {icon}
+    </div>
+    <div>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{title}</p>
+      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">{value}</h3>
+    </div>
+  </div>
+);
 
 export default Profile;

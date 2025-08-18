@@ -30,7 +30,7 @@ const PopularCamps = () => {
 
   return (
     <section className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 pt-16 pb-16 bg-gradient-to-r from-blue-50 to-blue-50 dark:from-background dark:to-background overflow-x-hidden transition-colors duration-300">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-green-800 dark:text-green-400 mb-12">
+      <h2 className="text-3xl md:text-5xl font-extrabold text-center  mb-12 bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
         Popular Medical Camps
       </h2>
 

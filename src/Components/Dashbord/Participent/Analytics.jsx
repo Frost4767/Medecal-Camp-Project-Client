@@ -36,7 +36,7 @@ const ParticipantAnalytics = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4 md:p-8">
-      <h2 className="text-4xl font-extrabold text-center mb-8 text-green-600 dark:text-secondary">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
         📊 Camp Analytics Dashboard
       </h2>
 

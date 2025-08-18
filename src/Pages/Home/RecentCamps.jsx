@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const recentCamps = [
-  { id: 1, name: "General Health Checkup", location: "Dhaka", healthcareProfessional: "Dr. Rahman", status: "New" , image: "https://i.ibb.co.com/7NQGGdkP/ai-generated-8881545-1280.jpg"},
-  { id: 2, name: "Cardiology Screening", location: "Chattogram", healthcareProfessional: "Dr. Sultana", status: "Popular" , image: "https://i.ibb.co.com/VcG4pP0m/hert.jpg"},
-  { id: 3, name: "Dental Care Camp", location: "Sylhet", healthcareProfessional: "Dr. Karim", status: "New" , image: "https://i.ibb.co.com/mCjqPvWW/daibatis.jpg"},
-  { id: 4, name: "Eye Care Camp", location: "Rajshahi", healthcareProfessional: "Dr. Anika", status: "Limited" , image: "https://i.ibb.co.com/QFxr02Kr/dental.jpg"},
-  { id: 5, name: "Blood Donation", location: "Barishal", healthcareProfessional: "Dr. Kamal", status: "Popular" , image: "https://i.ibb.co.com/q3C8W0xM/women.jpg"},
+  { id: 1, name: "General Health Checkup", location: "Dhaka", healthcareProfessional: "Dr. Rahman", status: "New", image: "https://i.ibb.co.com/7NQGGdkP/ai-generated-8881545-1280.jpg" },
+  { id: 2, name: "Cardiology Screening", location: "Chattogram", healthcareProfessional: "Dr. Sultana", status: "Popular", image: "https://i.ibb.co.com/VcG4pP0m/hert.jpg" },
+  { id: 3, name: "Dental Care Camp", location: "Sylhet", healthcareProfessional: "Dr. Karim", status: "New", image: "https://i.ibb.co.com/mCjqPvWW/daibatis.jpg" },
+  { id: 4, name: "Eye Care Camp", location: "Rajshahi", healthcareProfessional: "Dr. Anika", status: "Limited", image: "https://i.ibb.co.com/QFxr02Kr/dental.jpg" },
+  { id: 5, name: "Blood Donation", location: "Barishal", healthcareProfessional: "Dr. Kamal", status: "Popular", image: "https://i.ibb.co.com/q3C8W0xM/women.jpg" },
 ];
 
 const statusColor = {
@@ -26,17 +26,22 @@ const cardVariants = {
 
 const RecentCamps = () => {
   return (
-    <section className="py-16 bg-blue-50 dark:bg-background transition-colors duration-300">
+    <section className="relative py-20 bg-background transition-colors duration-500">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-extrabold text-center mb-12 text-green-800 dark:text-green-400">
-          Recently Added Camps
+        
+        {/* Title */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">
+          <span className="bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md">
+            Recently Added Camps
+          </span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        {/* Cards */}
+        <div className="flex flex-wrap justify-center gap-8">
           {recentCamps.map((camp, index) => (
             <motion.div
               key={camp.id}
-              className={`relative w-64 h-56 rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300`}
+              className="relative w-72 rounded-3xl overflow-hidden shadow-lg bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl border border-white/30 dark:border-gray-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-500"
               style={{ rotate: index % 2 === 0 ? "1deg" : "-1deg" }}
               variants={cardVariants}
               initial="hidden"
@@ -44,31 +49,34 @@ const RecentCamps = () => {
               viewport={{ once: true, amount: 0.3 }}
               custom={index}
             >
-              {/* Colored tile background */}
-              <div className="w-full h-full bg-gradient-to-tr from-white to-white dark:from-gray-700 dark:to-gray-600 flex flex-col justify-end p-4 text-white">
-                
-                <div className="w-full aspect-[3/2] overflow-hidden bg-gray-800 rounded-xl  ">
-                  <img
-                      src={camp?.image}
-                      alt="doctor"
-                      className="w-full h-full object-cover rounded-xl "
-                    />
-                 </div>
-                
-                
-                <h3 className="text-[#016630] dark:text-secondary text-lg font-bold">{camp.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <span className="font-semibold">Location:</span> {camp.location}
+              {/* Image */}
+              <div className="w-full h-40 overflow-hidden">
+                <img
+                  src={camp?.image}
+                  alt={camp.name}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-5 space-y-2">
+                <h3 className="text-lg font-bold text-green-800 dark:text-green-300">
+                  {camp.name}
+                </h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">📍 Location:</span> {camp.location}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <span className="font-semibold">Doctor:</span> {camp.healthcareProfessional}
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">👨‍⚕️ Doctor:</span> {camp.healthcareProfessional}
                 </p>
               </div>
 
-              {/* Status dot */}
+              {/* Status badge */}
               <span
-                className={`absolute top-3 left-3 w-3 h-3 rounded-full ${statusColor[camp.status]} shadow-md`}
-              ></span>
+                className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold rounded-full text-white shadow-md ${statusColor[camp.status]}`}
+              >
+                {camp.status}
+              </span>
             </motion.div>
           ))}
         </div>

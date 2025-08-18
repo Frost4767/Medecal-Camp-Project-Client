@@ -105,7 +105,7 @@ const CampDetails = () => {
 
         {/* Right Info */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-8 space-y-5 transition-colors">
-          <h1 className="text-4xl font-bold text-green-700 dark:text-green-400 mb-3">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent drop-shadow-md mb-3">
             {camp.name}
           </h1>
 
